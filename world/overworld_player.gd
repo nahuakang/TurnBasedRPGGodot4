@@ -1,9 +1,16 @@
 extends CharacterBody2D
 
+#############
+## VARIABLES
+#############
+
 @onready var animated_player := $AnimatedSprite2D
 
 const SPEED: float = 100.0
 
+#############
+## OVERRIDES
+#############
 
 func _physics_process(_delta: float) -> void:
 	move_player()
@@ -14,6 +21,10 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
 		SceneStack.push("res://battle/battle.tscn")
 
+
+###########
+## METHODS
+###########
 
 func move_player() -> void:
 	var movement := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

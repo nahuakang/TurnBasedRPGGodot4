@@ -138,3 +138,5 @@ autoplay = "pan_in"
 libraries = {
 "": SubResource("AnimationLibrary_osptw")
 }
+
+[node name="Timer" type="Timer" parent="."]

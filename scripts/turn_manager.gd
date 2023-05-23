@@ -1,17 +1,32 @@
 extends Resource
 class_name TurnManager
 
+###########
+## Signals
+###########
+
 signal ally_turn_started()
 signal ally_turn_ended()
 signal enemy_turn_started()
+
+#########
+## ENUMS
+#########
 
 enum {
 	ALLY_TURN,  # 0
 	ENEMY_TURN, # 1
 }
 
+#############
+## VARIABLES
+#############
+
 var turn := ALLY_TURN : set = set_turn
 
+###########
+## METHODS
+###########
 
 func set_turn(turn_value: int) -> void:
 	turn = turn_value
@@ -24,7 +39,7 @@ func set_turn(turn_value: int) -> void:
 
 
 func start() -> void:
-	turn = ALLY_TURN
+	set_turn(ALLY_TURN)
 
 
 func advance_turn() -> void:
@@ -39,4 +54,5 @@ func advance_turn() -> void:
 	#   00000010 --- 2
 	# & 00000001 --- 1
 	# = 00000000 --- 0
-	turn = int(turn + 1) & 1
+	var turn_value := int(turn + 1) & 1
+	set_turn(turn_value)

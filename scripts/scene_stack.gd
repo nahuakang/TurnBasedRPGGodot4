@@ -1,6 +1,14 @@
 extends Node
 
+#############
+## VARIABLES
+#############
+
 var stack: Array[Node] = []
+
+###########
+## METHODS
+###########
 
 # Push `new_scene_path` to the scene tree and root as the new active scene
 # and store the current active scene into `SceneStack.stack`
