@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=14 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
 [ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dy6fud2ns74hp" path="res://assets/sprites/BattleTree.png" id="5_rygbh"]
 [ext_resource type="Texture2D" uid="uid://bs5qex0ksyhv7" path="res://assets/sprites/BattleGrass.png" id="6_sm580"]
 [ext_resource type="Texture2D" uid="uid://do46680fgu20y" path="res://assets/sprites/BattleGrassFront.png" id="7_fqg2k"]
+[ext_resource type="PackedScene" uid="uid://iey05y3jrpbk" path="res://battle/battle_unit.tscn" id="7_spfpf"]
 [ext_resource type="Texture2D" uid="uid://k6aihbg0h4f6" path="res://assets/sprites/BattleGrassForeground.png" id="8_7jthr"]
 [ext_resource type="Texture2D" uid="uid://cqt53lm4q232s" path="res://assets/sprites/BattleTreesForeground.png" id="9_q74v3"]
 
@@ -92,6 +93,16 @@ motion_mirroring = Vector2(420, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
 texture = ExtResource("6_sm580")
 centered = false
+
+[node name="PlayerBattleUnit" type="Marker2D" parent="."]
+position = Vector2(80, 136)
+
+[node name="PlayerBattleUnit" parent="PlayerBattleUnit" instance=ExtResource("7_spfpf")]
+
+[node name="EnemyBattleUnit" type="Marker2D" parent="."]
+position = Vector2(240, 136)
+
+[node name="EnemyBattleUnit" parent="EnemyBattleUnit" instance=ExtResource("7_spfpf")]
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 
