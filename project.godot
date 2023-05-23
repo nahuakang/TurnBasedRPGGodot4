@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneStack="*res://scripts/scene_stack.gd"
+ReferenceStash="*res://scripts/reference_stash.gd"
 
 [display]
 

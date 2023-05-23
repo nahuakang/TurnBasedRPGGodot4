@@ -4,6 +4,9 @@ extends Node2D
 @onready var enemy_battle_unit: BattleUnit = $EnemyBattleUnit/EnemyBattleUnit
 @onready var pan_in_animation_player: AnimationPlayer = $AnimationPlayer
 
+var turn_manager: TurnManager = ReferenceStash.turn_manager
+
+
 func _ready() -> void:
 	await pan_in_animation_player.animation_finished
 
