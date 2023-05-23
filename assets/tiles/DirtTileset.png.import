@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxmbircyqf8wk"
-path="res://.godot/imported/ElizabethWalk.png-0e337b5a728584c029485b448f5b20d9.ctex"
+uid="uid://b3af02s61t5bs"
+path="res://.godot/imported/DirtTileset.png-fa097ba4b3643fe6ee5af944f823a2f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ElizabethWalk.png"
-dest_files=["res://.godot/imported/ElizabethWalk.png-0e337b5a728584c029485b448f5b20d9.ctex"]
+source_file="res://assets/tiles/DirtTileset.png"
+dest_files=["res://.godot/imported/DirtTileset.png-fa097ba4b3643fe6ee5af944f823a2f0.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

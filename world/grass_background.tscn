@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqmtk83sdu2gn"]
+
+[ext_resource type="Texture2D" uid="uid://f62g134vcoia" path="res://assets/sprites/GrassBase.png" id="1_oxq63"]
+
+[node name="GrassBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(320, 192)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("1_oxq63")
+stretch_mode = 1

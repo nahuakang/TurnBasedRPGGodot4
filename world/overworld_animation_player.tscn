@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://befj3e8ytmd3d"]
 
-[ext_resource type="Texture2D" uid="uid://cxmbircyqf8wk" path="res://assets/ElizabethWalk.png" id="1_fjokj"]
+[ext_resource type="Texture2D" uid="uid://cxmbircyqf8wk" path="res://assets/sprites/ElizabethWalk.png" id="1_fjokj"]
 [ext_resource type="Script" path="res://world/overworld_animation_player.gd" id="1_n6ktt"]
 
 [sub_resource type="Animation" id="Animation_e7fx4"]
