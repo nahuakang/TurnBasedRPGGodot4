@@ -1,11 +1,120 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=13 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
+[ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
+[ext_resource type="Texture2D" uid="uid://ph6ohecnbrps" path="res://assets/sprites/Mountains.png" id="3_xsnf3"]
+[ext_resource type="Texture2D" uid="uid://d2qv43jsx7xh" path="res://assets/sprites/BattleTrees.png" id="4_f3coq"]
+[ext_resource type="Texture2D" uid="uid://dy6fud2ns74hp" path="res://assets/sprites/BattleTree.png" id="5_rygbh"]
+[ext_resource type="Texture2D" uid="uid://bs5qex0ksyhv7" path="res://assets/sprites/BattleGrass.png" id="6_sm580"]
+[ext_resource type="Texture2D" uid="uid://do46680fgu20y" path="res://assets/sprites/BattleGrassFront.png" id="7_fqg2k"]
+[ext_resource type="Texture2D" uid="uid://k6aihbg0h4f6" path="res://assets/sprites/BattleGrassForeground.png" id="8_7jthr"]
+[ext_resource type="Texture2D" uid="uid://cqt53lm4q232s" path="res://assets/sprites/BattleTreesForeground.png" id="9_q74v3"]
+
+[sub_resource type="Animation" id="Animation_xnf42"]
+resource_name = "pan_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(-160, 90), Vector2(160, 90), Vector2(160, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_3qyng"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-160, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_osptw"]
+_data = {
+"RESET": SubResource("Animation_3qyng"),
+"pan_in": SubResource("Animation_xnf42")
+}
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_75qho")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "BATTLE SCENE"
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
+texture = ExtResource("2_vxqhw")
+centered = false
+
+[node name="MountainsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(400, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainsLayer"]
+texture = ExtResource("3_xsnf3")
+centered = false
+
+[node name="FarTreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(500, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FarTreesLayer"]
+texture = ExtResource("4_f3coq")
+centered = false
+
+[node name="TreeLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(480, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
+texture = ExtResource("5_rygbh")
+centered = false
+
+[node name="GrassLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(420, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
+texture = ExtResource("6_sm580")
+centered = false
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+
+[node name="GrassFrontLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/GrassFrontLayer"]
+texture = ExtResource("7_fqg2k")
+centered = false
+
+[node name="GrassForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/GrassForegroundLayer"]
+texture = ExtResource("8_7jthr")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer"]
+texture = ExtResource("9_q74v3")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-160, 90)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pan_in"
+libraries = {
+"": SubResource("AnimationLibrary_osptw")
+}
