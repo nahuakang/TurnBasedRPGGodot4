@@ -13,7 +13,7 @@ signal enemy_turn_started()
 ## ENUMS
 #########
 
-enum {
+enum TURN {
 	ALLY_TURN,  # 0
 	ENEMY_TURN, # 1
 }
@@ -22,24 +22,24 @@ enum {
 ## VARIABLES
 #############
 
-var turn := ALLY_TURN : set = set_turn
+var turn := TURN.ALLY_TURN : set = set_turn
 
 ###########
 ## METHODS
 ###########
 
-func set_turn(turn_value: int) -> void:
+func set_turn(turn_value: TURN) -> void:
 	turn = turn_value
 
 	match turn:
-		ALLY_TURN: emit_signal("ally_turn_started")
-		ENEMY_TURN:
+		TURN.ALLY_TURN: emit_signal("ally_turn_started")
+		TURN.ENEMY_TURN:
 			emit_signal("ally_turn_ended")
 			emit_signal("enemy_turn_started")
 
 
 func start() -> void:
-	set_turn(ALLY_TURN)
+	set_turn(TURN.ALLY_TURN)
 
 
 func advance_turn() -> void:
