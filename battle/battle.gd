@@ -30,7 +30,7 @@ func _unhandled_input(event: InputEvent):
 
 func _on_ally_turn_started() -> void:
 	print("RECEIVED SIGNAL ON ALLY TURN STARTED")
-	await player_battle_unit.melee_attack()
+	await player_battle_unit.melee_attack(enemy_battle_unit)
 
 	turn_manager.advance_turn()
 
