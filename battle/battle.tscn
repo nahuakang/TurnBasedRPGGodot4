@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=17 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
 [ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
@@ -27,6 +27,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-160, 90)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlashLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlashLayer/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlashLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_xnf42"]
 resource_name = "pan_in"
@@ -43,12 +79,51 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-160, 90), Vector2(160, 90), Vector2(160, 90)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlashLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.772549, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlashLayer/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlashLayer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osptw"]
 _data = {
 "RESET": SubResource("Animation_3qyng"),
 "pan_in": SubResource("Animation_xnf42")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sr3sd"]
+blend_mode = 1
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_75qho")
@@ -145,3 +220,14 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="FlashLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FlashLayer"]
+z_index = 100
+material = SubResource("CanvasItemMaterial_sr3sd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
