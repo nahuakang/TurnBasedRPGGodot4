@@ -34,5 +34,5 @@ func get_current_animation_length() -> float:
 	return animation_player.current_animation_length / animation_player.speed_scale
 
 
-func _on_animation_player_animation_finished() -> void:
+func _on_animation_player_animation_finished(_anim_name: String) -> void:
 	animation_finished.emit()

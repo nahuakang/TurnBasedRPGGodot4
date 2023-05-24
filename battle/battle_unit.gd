@@ -22,4 +22,16 @@ func _ready() -> void:
 ###########
 
 func melee_attack() -> void:
+	battle_animations.play("approach")
+	await battle_animations.animation_finished
+
 	print("Melee attack!")
+
+	battle_animations.play("melee")
+	await battle_animations.animation_finished
+
+	battle_animations.play("return")
+	await battle_animations.animation_finished
+
+	# Don't `await` after "idle", let the caller `await`
+	battle_animations.play("idle")
