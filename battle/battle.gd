@@ -10,6 +10,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 
 var turn_manager: TurnManager = ReferenceStash.turn_manager
+var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 
 #############
 ## OVERRIDES
@@ -22,6 +23,8 @@ func _ready() -> void:
 	turn_manager.enemy_turn_started.connect(_on_enemy_turn_started)
 	turn_manager.start()
 
+	async_turn_pool.turn_over.connect(_on_async_turn_pool_turn_over)
+
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
@@ -29,12 +32,12 @@ func _unhandled_input(event: InputEvent):
 
 
 func _on_ally_turn_started() -> void:
-	await player_battle_unit.melee_attack(enemy_battle_unit)
-
-	turn_manager.advance_turn()
+	player_battle_unit.melee_attack(enemy_battle_unit)
 
 
 func _on_enemy_turn_started() -> void:
-	await enemy_battle_unit.melee_attack(player_battle_unit)
+	enemy_battle_unit.melee_attack(player_battle_unit)
 
+
+func _on_async_turn_pool_turn_over() -> void:
 	turn_manager.advance_turn()

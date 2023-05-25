@@ -15,6 +15,7 @@ const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 var battle_animations: BattleAnimations
+var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 
 #############
 ## OVERRIDES
@@ -32,6 +33,8 @@ func _ready() -> void:
 ###########
 
 func melee_attack(target: BattleUnit) -> void:
+	async_turn_pool.add(self)
+
 	# Set Z index to make attacker render on top
 	z_index = APPROACHER_Z_INDEX
 
@@ -58,11 +61,15 @@ func melee_attack(target: BattleUnit) -> void:
 
 	# Reset Z index
 	z_index = ROOT_Z_INDEX
-	# Don't `await` after "idle", let the caller `await`
+	# Don't `await` after "idle" since "idle" is the default state
 	battle_animations.play("idle")
+
+	async_turn_pool.remove(self)
 
 
 func take_hit(attacker: BattleUnit) -> void:
+	async_turn_pool.add(self)
+
 	var knockback_position := global_position.move_toward(attacker.global_position, -KNOCKBACK_OFFSET)
 	interpolate_position(knockback_position, 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
 
@@ -70,6 +77,8 @@ func take_hit(attacker: BattleUnit) -> void:
 	await battle_animations.animation_finished
 
 	interpolate_position(root_position, 0.2, Tween.TRANS_CIRC)
+
+	async_turn_pool.remove(self)
 
 
 func interpolate_position(
