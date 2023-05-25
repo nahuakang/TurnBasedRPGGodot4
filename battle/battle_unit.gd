@@ -11,6 +11,7 @@ class_name BattleUnit
 @onready var root_position: Vector2 = global_position # Position before attack
 
 const APPROACH_OFFSET: int = 48          # Offset to not cover the attackee
+const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 var battle_animations: BattleAnimations
@@ -34,6 +35,7 @@ func melee_attack(target: BattleUnit) -> void:
 	# Set Z index to make attacker render on top
 	z_index = APPROACHER_Z_INDEX
 
+	# Attacker approaches
 	battle_animations.play("approach")
 	# global_position ===> target_position <=== - APPROACH_OFFSET <=== target.global_position
 	var target_position := target.global_position.move_toward(global_position, APPROACH_OFFSET)
@@ -41,9 +43,14 @@ func melee_attack(target: BattleUnit) -> void:
 	interpolate_position(target_position, animation_duration)
 	await battle_animations.animation_finished
 
+	# Target takes hit; `BattleUnit.take_hit` is a coroutine that runs separately from `melee`
+	target.take_hit(self)
+
+	# Animate melee action
 	battle_animations.play("melee")
 	await battle_animations.animation_finished
 
+	# Attacker returns to root position
 	battle_animations.play("return")
 	animation_duration = battle_animations.get_current_animation_length()
 	interpolate_position(root_position, animation_duration)
@@ -53,6 +60,16 @@ func melee_attack(target: BattleUnit) -> void:
 	z_index = ROOT_Z_INDEX
 	# Don't `await` after "idle", let the caller `await`
 	battle_animations.play("idle")
+
+
+func take_hit(attacker: BattleUnit) -> void:
+	var knockback_position := global_position.move_toward(attacker.global_position, -KNOCKBACK_OFFSET)
+	interpolate_position(knockback_position, 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
+
+	battle_animations.play("hit")
+	await battle_animations.animation_finished
+
+	interpolate_position(root_position, 0.2, Tween.TRANS_CIRC)
 
 
 func interpolate_position(
