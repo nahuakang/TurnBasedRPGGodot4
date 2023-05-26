@@ -95,9 +95,6 @@ func deal_damage(target: BattleUnit) -> void:
 	var damage = ((stats.level * 3 + (1 - target.stats.defense * 0.05)) / 2) * stats.attack / 6
 	target.stats.set_health(target.stats.health - damage)
 
-	print("Health left: ", target.stats.health)
-	print("Damage dealt: ", damage)
-
 
 func take_hit(attacker: BattleUnit) -> void:
 	async_turn_pool.add(self)
