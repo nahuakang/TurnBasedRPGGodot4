@@ -62,6 +62,9 @@ func melee_attack(target: BattleUnit) -> void:
 	interpolate_position(target_position, animation_duration)
 	await battle_animations.animation_finished
 
+	# Deal damage to the target
+	deal_damage(target)
+
 	# Target takes hit; `BattleUnit.take_hit` is a coroutine that runs separately from `melee`
 	target.take_hit(self)
 
@@ -81,6 +84,13 @@ func melee_attack(target: BattleUnit) -> void:
 	battle_animations.play("idle")
 
 	async_turn_pool.remove(self)
+
+
+func deal_damage(target: BattleUnit) -> void:
+	var damage = ((stats.level * 3 + (1 - target.stats.defense * 0.05)) / 2) * stats.attack / 6
+	target.stats.health -= damage
+
+	print("Damage dealt: ", damage)
 
 
 func take_hit(attacker: BattleUnit) -> void:
