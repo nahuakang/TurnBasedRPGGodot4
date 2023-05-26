@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent):
 
 
 func _on_ally_turn_started() -> void:
-	if not is_instance_valid(enemy_battle_unit) or enemy_battle_unit.is_queued_for_deletion():
+	if not is_instance_valid(player_battle_unit) or player_battle_unit.is_queued_for_deletion():
 		return
 
 	player_battle_unit.melee_attack(enemy_battle_unit)

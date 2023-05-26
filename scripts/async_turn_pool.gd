@@ -22,6 +22,10 @@ func add(node: Node) -> void:
 
 
 func remove(node: Node) -> void:
+	# Do not emit `turn_over` if no nodes are in `active_nodes` to start with
+	if active_nodes.is_empty():
+		return
+
 	active_nodes.erase(node)
 	if active_nodes.is_empty():
 		turn_over.emit()
