@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bs5qex0ksyhv7" path="res://assets/sprites/BattleGrass.png" id="6_sm580"]
 [ext_resource type="Texture2D" uid="uid://do46680fgu20y" path="res://assets/sprites/BattleGrassFront.png" id="7_fqg2k"]
 [ext_resource type="PackedScene" uid="uid://iey05y3jrpbk" path="res://battle/battle_unit.tscn" id="7_spfpf"]
+[ext_resource type="Resource" uid="uid://cl3i5jti6ku8h" path="res://class_stats/elizabeth_class_stats.tres" id="8_1bvyb"]
 [ext_resource type="Texture2D" uid="uid://k6aihbg0h4f6" path="res://assets/sprites/BattleGrassForeground.png" id="8_7jthr"]
-[ext_resource type="PackedScene" uid="uid://b1vf266l34g23" path="res://battle/elizabeth_battle_animations.tscn" id="8_gt7ev"]
-[ext_resource type="PackedScene" uid="uid://o6lcdf86yxbe" path="res://battle/werewolf_battle_animations.tscn" id="9_17dwk"]
+[ext_resource type="Resource" uid="uid://dulhmh0tatbv0" path="res://class_stats/werewolf_class_stats.tres" id="9_btxun"]
 [ext_resource type="Texture2D" uid="uid://cqt53lm4q232s" path="res://assets/sprites/BattleTreesForeground.png" id="9_q74v3"]
 
 [sub_resource type="Animation" id="Animation_3qyng"]
@@ -175,14 +175,14 @@ centered = false
 position = Vector2(80, 136)
 
 [node name="PlayerBattleUnit" parent="PlayerBattleUnit" instance=ExtResource("7_spfpf")]
-battle_animations_scene = ExtResource("8_gt7ev")
+stats = ExtResource("8_1bvyb")
 
 [node name="EnemyBattleUnit" type="Marker2D" parent="."]
 position = Vector2(240, 136)
 
 [node name="EnemyBattleUnit" parent="EnemyBattleUnit" instance=ExtResource("7_spfpf")]
 scale = Vector2(-1, 1)
-battle_animations_scene = ExtResource("9_17dwk")
+stats = ExtResource("9_btxun")
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
 
