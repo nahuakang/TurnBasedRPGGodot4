@@ -28,6 +28,11 @@ func _ready() -> void:
 		add_child(battle_animations)
 
 
+func _exit_tree() -> void:
+	# Remove self from `AsyncTurnPool` exiting from the tree, a.k.a. `self.queue_free()`
+	async_turn_pool.remove(self)
+
+
 #####################
 ## SETTERS & GETTERS
 #####################
@@ -88,8 +93,9 @@ func melee_attack(target: BattleUnit) -> void:
 
 func deal_damage(target: BattleUnit) -> void:
 	var damage = ((stats.level * 3 + (1 - target.stats.defense * 0.05)) / 2) * stats.attack / 6
-	target.stats.health -= damage
+	target.stats.set_health(target.stats.health - damage)
 
+	print("Health left: ", target.stats.health)
 	print("Damage dealt: ", damage)
 
 
@@ -102,9 +108,17 @@ func take_hit(attacker: BattleUnit) -> void:
 	battle_animations.play("hit")
 	await battle_animations.animation_finished
 
+	check_death()
+
 	interpolate_position(root_position, 0.2, Tween.TRANS_CIRC)
 
 	async_turn_pool.remove(self)
+
+
+func check_death() -> void:
+	if stats.health == 0:
+		queue_free()
+		return
 
 
 func interpolate_position(
