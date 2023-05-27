@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bytiyxp3n1j8y"]
+
+[ext_resource type="Texture2D" uid="uid://dqhxrrloaq6q1" path="res://assets/sprites/Textbox9Slice.png" id="1_b5rmn"]
+[ext_resource type="FontVariation" uid="uid://cd0513j1qqupo" path="res://assets/westwick_font.tres" id="1_xq7rl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhxhv"]
+texture = ExtResource("1_b5rmn")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("1_xq7rl")
+default_font_size = 16
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_nhxhv")
