@@ -8,6 +8,8 @@ extends Node2D
 @onready var enemy_battle_unit: BattleUnit = $EnemyBattleUnit/EnemyBattleUnit
 @onready var pan_in_animation_player: AnimationPlayer = $AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
+@onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 
 const EXIT_TIMER_TIMOUT: float = 1.0
 
@@ -19,6 +21,9 @@ var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 #############
 
 func _ready() -> void:
+	player_battle_unit_info.stats = player_battle_unit.stats
+	enemy_battle_unit_info.stats = enemy_battle_unit.stats
+
 	await pan_in_animation_player.animation_finished
 
 	turn_manager.ally_turn_started.connect(_on_ally_turn_started)

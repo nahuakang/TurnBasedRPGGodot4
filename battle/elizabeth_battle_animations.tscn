@@ -188,7 +188,6 @@ _data = {
 }
 
 [node name="ElizabethBattleAnimations" type="Sprite2D"]
-modulate = Color(2.27451, 1.8, 1, 1)
 position = Vector2(25, -51)
 texture = ExtResource("1_ldv4u")
 hframes = 36
