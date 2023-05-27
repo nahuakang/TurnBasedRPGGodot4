@@ -48,6 +48,8 @@ func exit_battle() -> void:
 
 func _on_ally_turn_started() -> void:
 	if not is_instance_valid(player_battle_unit):
+		timer.start(EXIT_TIMER_TIMOUT)
+		await timer.timeout
 		get_tree().quit()
 		return
 
