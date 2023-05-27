@@ -27,12 +27,6 @@ func _ready() -> void:
 		battle_animations = stats.battle_animations.instantiate()
 		add_child(battle_animations)
 
-
-func _exit_tree() -> void:
-	# Remove self from `AsyncTurnPool` exiting from the tree, a.k.a. `self.queue_free()`
-	async_turn_pool.remove(self)
-
-
 #####################
 ## SETTERS & GETTERS
 #####################
@@ -47,7 +41,6 @@ func set_stats(value: ClassStats) -> void:
 		battle_animations.queue_free()
 		battle_animations = stats.battle_animations.instantiate()
 		add_child(battle_animations)
-
 
 ###########
 ## METHODS
@@ -105,7 +98,10 @@ func take_hit(attacker: BattleUnit) -> void:
 	if stats.health == 0:
 		battle_animations.play("death")
 		await battle_animations.animation_finished
+
+		async_turn_pool.remove(self)
 		queue_free()
+		return
 	else:
 		battle_animations.play("hit")
 		await battle_animations.animation_finished
