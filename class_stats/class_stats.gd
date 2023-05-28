@@ -24,6 +24,7 @@ var health: int = 1: set = set_health
 
 signal health_changed
 signal health_depleted
+signal level_changed
 signal max_health_changed
 
 ###########

@@ -1,6 +1,13 @@
 extends Node2D
 
 #############
+## CONSTANTS
+#############
+
+const EXIT_TIMER_TIMOUT: float = 1.0
+const BATTLE_WON_TIMEOUT: float = 0.5
+
+#############
 ## VARIABLES
 #############
 
@@ -11,7 +18,9 @@ extends Node2D
 @onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 
-const EXIT_TIMER_TIMOUT: float = 1.0
+##############
+## REFERENCES
+##############
 
 var turn_manager: TurnManager = ReferenceStash.turn_manager
 var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
@@ -41,6 +50,24 @@ func _unhandled_input(event: InputEvent):
 ## METHODS
 ###########
 
+func battle_won() -> void:
+	timer.start(BATTLE_WON_TIMEOUT)
+	await timer.timeout
+
+	# Coercing into PlayerClassStats from ClassStats
+	var player_stats: PlayerClassStats = player_battle_unit.stats
+
+	var previous_level := player_battle_unit.stats.level
+	# TODO: This is hardcoded experience
+	player_battle_unit.stats.experience += 105
+
+	if player_battle_unit.stats.level > previous_level:
+		print("LEVEL UP!!!")
+
+	timer.start(BATTLE_WON_TIMEOUT)
+	await timer.timeout
+
+
 func exit_battle() -> void:
 	timer.start(EXIT_TIMER_TIMOUT)
 	await timer.timeout
@@ -62,7 +89,10 @@ func _on_ally_turn_started() -> void:
 
 
 func _on_enemy_turn_started() -> void:
+	# No enemy unit exists in the scene, player won
 	if not is_instance_valid(enemy_battle_unit) or enemy_battle_unit.is_queued_for_deletion():
+		await battle_won()
+
 		exit_battle()
 		return
 

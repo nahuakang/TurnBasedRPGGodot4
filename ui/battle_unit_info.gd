@@ -26,11 +26,25 @@ func connect_stats() -> void:
 	stats.health_changed.connect(_on_stats_health_changed)
 	health_bar.set_bar(stats.health, stats.max_health)
 
+	stats.level_changed.connect(_on_stats_level_changed)
+
+	update_level()
+
+###########
+## METHODS
+###########
+
+func update_level() -> void:
 	level_label.text = "Level: " + str(stats.level)
+
 
 ##################
 ## SIGNAL METHODS
 ##################
+
+func _on_stats_level_changed() -> void:
+	update_level()
+
 
 func _on_stats_health_changed() -> void:
 	health_bar.animate_bar(stats.health, stats.max_health)
