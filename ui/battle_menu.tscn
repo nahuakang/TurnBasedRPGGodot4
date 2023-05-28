@@ -12,8 +12,16 @@
 
 [node name="BattleMenu" type="HBoxContainer"]
 custom_minimum_size = Vector2(184, 24)
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -30.0
+offset_right = 92.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("1_422go")
 theme_override_constants/separation = 0
 script = ExtResource("2_gnu56")
@@ -70,3 +78,7 @@ layout_mode = 2
 texture = ExtResource("2_vgqn4")
 stretch_mode = 3
 flip_h = true
+
+[connection signal="button_down" from="PanelContainer/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_action_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/HBoxContainer/ItemButton" to="." method="_on_item_button_button_down"]
+[connection signal="button_down" from="PanelContainer/MarginContainer/HBoxContainer/RunButton" to="." method="_on_run_button_button_down"]
