@@ -38,6 +38,9 @@ func set_bar(value: float, max_value: float) -> void:
 	actual_bar.value = bar_value
 
 
+## Animate the progress bar. `value` is the value to animate to.
+## `max_value` is the maximum value that should not be exceeded.
+## `duration` is the animation duration in seconds, default to 1.0.
 func animate_bar(value: float, max_value: float, duration: float = 1.0) -> void:
 	var previous_bar_value := bar_value
 	bar_value = calculate_bar_value(value, max_value)

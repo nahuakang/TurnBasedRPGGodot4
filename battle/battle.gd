@@ -17,6 +17,7 @@ const BATTLE_WON_TIMEOUT: float = 0.5
 @onready var timer: Timer = $Timer
 @onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
+@onready var level_up_ui: LevelUpUI = %LevelUpUI
 
 ##############
 ## REFERENCES
@@ -62,7 +63,7 @@ func battle_won() -> void:
 	player_battle_unit.stats.experience += 105
 
 	if player_battle_unit.stats.level > previous_level:
-		print("LEVEL UP!!!")
+		await level_up_ui.level_up()
 
 	timer.start(BATTLE_WON_TIMEOUT)
 	await timer.timeout
