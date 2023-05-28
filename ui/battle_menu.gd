@@ -26,10 +26,10 @@ enum MENU_OPTION {
 signal menu_option_selected(option: MENU_OPTION)
 
 #############
-## OVERRIDES
+## METHODS
 #############
 
-func _ready() -> void:
+func grab_action_focus() -> void:
 	action_button.grab_focus()
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=20 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
 [ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cqt53lm4q232s" path="res://assets/sprites/BattleTreesForeground.png" id="9_q74v3"]
 [ext_resource type="PackedScene" uid="uid://bgtpiv2wsh8t8" path="res://ui/battle_unit_info.tscn" id="13_fy6nq"]
 [ext_resource type="PackedScene" uid="uid://deerril57b1c5" path="res://ui/level_up_ui.tscn" id="14_3ola2"]
+[ext_resource type="PackedScene" uid="uid://b7pdbhyuurbn5" path="res://ui/battle_menu.tscn" id="15_l2835"]
 
 [sub_resource type="Animation" id="Animation_3qyng"]
 length = 0.001
@@ -112,10 +113,10 @@ tracks/3/path = NodePath("FlashLayer:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osptw"]
@@ -249,6 +250,10 @@ grow_vertical = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="BattleMenu" parent="BattleUI" instance=ExtResource("15_l2835")]
+unique_name_in_owner = true
+visible = false
 
 [node name="FlashLayer" type="CanvasLayer" parent="."]
 layer = 100

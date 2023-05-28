@@ -18,6 +18,7 @@ const BATTLE_WON_TIMEOUT: float = 0.5
 @onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 @onready var level_up_ui: LevelUpUI = %LevelUpUI
+@onready var battle_menu: BattleMenu = %BattleMenu
 
 ##############
 ## REFERENCES
@@ -42,10 +43,10 @@ func _ready() -> void:
 
 	async_turn_pool.turn_over.connect(_on_async_turn_pool_turn_over)
 
-
-func _unhandled_input(event: InputEvent):
-	if event.is_action_pressed("ui_accept"):
-		SceneStack.pop()
+## DEBUGGING METHOD
+#func _unhandled_input(event: InputEvent):
+#	if event.is_action_pressed("ui_accept"):
+#		SceneStack.pop()
 
 ###########
 ## METHODS
@@ -86,7 +87,24 @@ func _on_ally_turn_started() -> void:
 		get_tree().quit()
 		return
 
-	player_battle_unit.melee_attack(enemy_battle_unit)
+	# Using `BattleMenu` to handle player input in the turn
+	battle_menu.show()
+
+	battle_menu.grab_action_focus()
+	var menu_option: BattleMenu.MENU_OPTION = await battle_menu.menu_option_selected
+	match menu_option:
+		BattleMenu.MENU_OPTION.ACTION:
+			player_battle_unit.melee_attack(enemy_battle_unit)
+		BattleMenu.MENU_OPTION.ITEM:
+			print("TODO: Item")
+			turn_manager.advance_turn()
+		BattleMenu.MENU_OPTION.RUN:
+			print("TODO: Run")
+			SceneStack.pop() # Note this doesn't work playing the `battle.tscn` itself
+
+	battle_menu.hide()
+
+
 
 
 func _on_enemy_turn_started() -> void:
