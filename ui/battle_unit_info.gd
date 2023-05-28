@@ -30,9 +30,6 @@ func connect_stats() -> void:
 
 	update_level()
 
-###########
-## METHODS
-###########
 
 func update_level() -> void:
 	level_label.text = "Level: " + str(stats.level)

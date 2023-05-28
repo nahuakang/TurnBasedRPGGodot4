@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bytiyxp3n1j8y"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bytiyxp3n1j8y"]
 
 [ext_resource type="Texture2D" uid="uid://dqhxrrloaq6q1" path="res://assets/sprites/Textbox9Slice.png" id="1_b5rmn"]
 [ext_resource type="FontVariation" uid="uid://cd0513j1qqupo" path="res://assets/westwick_font.tres" id="1_xq7rl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl27e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bhf0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_up540"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hrby"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2hax"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhxhv"]
 texture = ExtResource("1_b5rmn")
@@ -13,4 +23,13 @@ texture_margin_bottom = 4.0
 [resource]
 default_font = ExtResource("1_xq7rl")
 default_font_size = 16
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.972549, 0.941176, 0.211765, 1)
+Button/colors/font_hover_color = Color(0.972549, 0.941176, 0.211765, 1)
+Button/colors/font_pressed_color = Color(1, 0.721569, 0.192157, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_cl27e")
+Button/styles/focus = SubResource("StyleBoxEmpty_0bhf0")
+Button/styles/hover = SubResource("StyleBoxEmpty_up540")
+Button/styles/normal = SubResource("StyleBoxEmpty_5hrby")
+Button/styles/pressed = SubResource("StyleBoxEmpty_g2hax")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_nhxhv")
