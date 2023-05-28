@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://cl3i5jti6ku8h"]
+[gd_resource type="Resource" script_class="PlayerClassStats" load_steps=3 format=3 uid="uid://cl3i5jti6ku8h"]
 
 [ext_resource type="PackedScene" uid="uid://b1vf266l34g23" path="res://battle/elizabeth_battle_animations.tscn" id="1_f07vl"]
-[ext_resource type="Script" path="res://class_stats/class_stats.gd" id="1_mlh21"]
+[ext_resource type="Script" path="res://class_stats/player_class_stats.gd" id="2_iwynn"]
 
 [resource]
-script = ExtResource("1_mlh21")
+script = ExtResource("2_iwynn")
 name = "Elizabeth"
 max_health = 10
 attack = 8
