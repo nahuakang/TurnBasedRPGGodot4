@@ -6,6 +6,10 @@ extends Node2D
 
 const EXIT_TIMER_TIMOUT: float = 1.0
 const BATTLE_WON_TIMEOUT: float = 0.5
+const CAMERA_TWEEN_OFFSET: int = 32
+const CAMERA_TWEEN_ZOOMIN_SCALE: float = 1.25
+const CAMERA_TWEEN_FOCUS_ZOOM_IN := Vector2(CAMERA_TWEEN_ZOOMIN_SCALE, CAMERA_TWEEN_ZOOMIN_SCALE)
+const CAMERA_TWEEN_FOCUS_ZOOM_DEFAULT := Vector2.ONE
 
 #############
 ## VARIABLES
@@ -19,6 +23,13 @@ const BATTLE_WON_TIMEOUT: float = 0.5
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 @onready var level_up_ui: LevelUpUI = %LevelUpUI
 @onready var battle_menu: BattleMenu = %BattleMenu
+@onready var battle_camera: BattleCamera = $BattleCamera
+# The camera position to return to after tweening camera movement for attack
+@onready var center_position: Vector2 = $CenterRoot/CenterPoint.global_position
+# The camera position to tween to when the player attacks the enemy
+@onready var enemy_camera_position: Vector2 = get_battle_unit_camera_position(enemy_battle_unit)
+# The camera position to tween to when the enemy attacks the player
+@onready var player_camera_position: Vector2 = get_battle_unit_camera_position(player_battle_unit)
 
 ##############
 ## REFERENCES
@@ -76,6 +87,11 @@ func exit_battle() -> void:
 	SceneStack.pop()
 
 
+func get_battle_unit_camera_position(battle_unit: BattleUnit) -> Vector2:
+	var start_position := Vector2(battle_unit.global_position.x, center_position.y)
+	var final_position := start_position.move_toward(center_position, CAMERA_TWEEN_OFFSET)
+	return final_position
+
 ###################
 ## SIGNALS METHODS
 ###################
@@ -94,10 +110,13 @@ func _on_ally_turn_started() -> void:
 	var menu_option: BattleMenu.MENU_OPTION = await battle_menu.menu_option_selected
 	match menu_option:
 		BattleMenu.MENU_OPTION.ACTION:
+			battle_camera.focus_target(enemy_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
 			player_battle_unit.melee_attack(enemy_battle_unit)
+
 		BattleMenu.MENU_OPTION.ITEM:
 			print("TODO: Item")
 			turn_manager.advance_turn()
+
 		BattleMenu.MENU_OPTION.RUN:
 			print("TODO: Run (Can add a coin flip on damage upon escape)")
 			exit_battle()
@@ -113,8 +132,10 @@ func _on_enemy_turn_started() -> void:
 		exit_battle()
 		return
 
+	battle_camera.focus_target(player_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
 	enemy_battle_unit.melee_attack(player_battle_unit)
 
 
 func _on_async_turn_pool_turn_over() -> void:
+	await battle_camera.focus_target(center_position, CAMERA_TWEEN_FOCUS_ZOOM_DEFAULT)
 	turn_manager.advance_turn()

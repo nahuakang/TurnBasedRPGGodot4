@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=21 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
 [ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://k6aihbg0h4f6" path="res://assets/sprites/BattleGrassForeground.png" id="8_7jthr"]
 [ext_resource type="Resource" uid="uid://dulhmh0tatbv0" path="res://class_stats/werewolf_class_stats.tres" id="9_btxun"]
 [ext_resource type="Texture2D" uid="uid://cqt53lm4q232s" path="res://assets/sprites/BattleTreesForeground.png" id="9_q74v3"]
+[ext_resource type="PackedScene" uid="uid://bdoqjolgd1scb" path="res://battle/battle_camera.tscn" id="13_3axkf"]
 [ext_resource type="PackedScene" uid="uid://bgtpiv2wsh8t8" path="res://ui/battle_unit_info.tscn" id="13_fy6nq"]
 [ext_resource type="PackedScene" uid="uid://deerril57b1c5" path="res://ui/level_up_ui.tscn" id="14_3ola2"]
 [ext_resource type="PackedScene" uid="uid://b7pdbhyuurbn5" path="res://ui/battle_menu.tscn" id="15_l2835"]
@@ -21,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("BattleCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +74,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("BattleCamera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -213,7 +214,7 @@ position = Vector2(-320, 0)
 texture = ExtResource("9_q74v3")
 centered = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="BattleCamera" parent="." instance=ExtResource("13_3axkf")]
 position = Vector2(-160, 90)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -265,5 +266,22 @@ material = SubResource("CanvasItemMaterial_sr3sd")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterRoot" type="Node" parent="."]
+
+[node name="CenterPoint" type="Control" parent="CenterRoot"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
