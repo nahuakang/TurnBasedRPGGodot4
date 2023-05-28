@@ -1,14 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgtpiv2wsh8t8"]
+[gd_scene load_steps=5 format=3 uid="uid://bgtpiv2wsh8t8"]
 
 [ext_resource type="PackedScene" uid="uid://wtjgk8o0vvan" path="res://ui/value_bar.tscn" id="1_6h7ju"]
 [ext_resource type="Script" path="res://ui/battle_unit_info.gd" id="1_m55ct"]
+[ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_xhcau"]
+[ext_resource type="Texture2D" uid="uid://g57tx65s3te" path="res://assets/sprites/BattleUnitInfoShadow.png" id="3_ibdqi"]
 
 [node name="BattleUnitInfo" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 68.0
 offset_bottom = 12.0
+theme = ExtResource("1_xhcau")
 script = ExtResource("1_m55ct")
+
+[node name="Shadow" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 26.0
+texture = ExtResource("3_ibdqi")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_6h7ju")]
 layout_mode = 0
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 12.0
+offset_right = 58.0
+offset_bottom = 26.0
+text = "Level: 100"

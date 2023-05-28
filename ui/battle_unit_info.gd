@@ -6,6 +6,7 @@ class_name BattleUnitInfo
 #############
 
 @onready var health_bar: ValueBar = $HealthBar
+@onready var level_label: Label = $LevelLabel
 
 var stats: ClassStats: set = set_stats
 
@@ -24,6 +25,8 @@ func connect_stats() -> void:
 
 	stats.health_changed.connect(_on_stats_health_changed)
 	health_bar.set_bar(stats.health, stats.max_health)
+
+	level_label.text = "Level: " + str(stats.level)
 
 ##################
 ## SIGNAL METHODS
