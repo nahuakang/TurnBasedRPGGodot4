@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjykyw5h2jpy"]
+[gd_scene load_steps=3 format=3 uid="uid://brjykyw5h2jpy"]
 
 [ext_resource type="Script" path="res://world/item_pickup.gd" id="1_4ptii"]
+[ext_resource type="Texture2D" uid="uid://cecnkveil8s6t" path="res://assets/sprites/Apple.png" id="1_18u2h"]
 
 [node name="ItemPickup" type="StaticBody2D"]
 collision_layer = 9
@@ -9,6 +10,7 @@ script = ExtResource("1_4ptii")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
+texture = ExtResource("1_18u2h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-6, 4, -6, -4, -4, -6, 4, -6, 6, -4, 6, 4, 4, 6, -4, 6)

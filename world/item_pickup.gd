@@ -21,8 +21,7 @@ var inventory: Inventory = ReferenceStash.inventory
 func _run_interaction() -> void:
 	inventory.add_item(item)
 
-	Events.request_show_message.emit(
-		"You found a " + item.name + ".\n" + item.description)
+	Events.request_show_message.emit("You found a " + item.name + ".")
 
 	# Remove the item upon interaction
 	queue_free()

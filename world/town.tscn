@@ -20,6 +20,7 @@ position = Vector2(108, 79)
 
 [node name="Barrel" parent="." instance=ExtResource("4_eehsa")]
 position = Vector2(72, 104)
+item = ExtResource("6_41kfg")
 
 [node name="Barrel2" parent="." instance=ExtResource("4_eehsa")]
 position = Vector2(280, 40)
