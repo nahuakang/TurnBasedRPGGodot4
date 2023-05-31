@@ -8,7 +8,7 @@ class_name Item
 @export var name: String
 @export_multiline var description: String
 @export var amount: int: set = set_amount
-@export var overworld_sprite: Texture
+@export var overworld_texture: Texture
 
 ###########
 ## METHODS

@@ -8,4 +8,4 @@ script = ExtResource("1_ibjc4")
 name = "Apple"
 description = "A small fruit that heals 2 health."
 amount = 1
-overworld_sprite = ExtResource("1_j3dok")
+overworld_texture = ExtResource("1_j3dok")

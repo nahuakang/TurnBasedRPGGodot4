@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1g63qdlq0ae5"]
+[gd_scene load_steps=7 format=3 uid="uid://c1g63qdlq0ae5"]
 
 [ext_resource type="PackedScene" uid="uid://7ekxn24buju2" path="res://world/overworld_player.tscn" id="1_5babj"]
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="2_adq74"]
 [ext_resource type="PackedScene" uid="uid://diy02kycrubr2" path="res://world/dirt_tiles.tscn" id="2_phpyc"]
 [ext_resource type="PackedScene" uid="uid://3lj6677x6swj" path="res://world/barrel.tscn" id="4_eehsa"]
+[ext_resource type="PackedScene" uid="uid://brjykyw5h2jpy" path="res://world/item_pickup.tscn" id="5_rskpt"]
+[ext_resource type="Resource" uid="uid://cjitjo12n3723" path="res://items/apple_item.tres" id="6_41kfg"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -24,3 +26,7 @@ position = Vector2(280, 40)
 
 [node name="Barrel3" parent="." instance=ExtResource("4_eehsa")]
 position = Vector2(152, 200)
+
+[node name="ItemPickup" parent="." instance=ExtResource("5_rskpt")]
+position = Vector2(136, 104)
+item = ExtResource("6_41kfg")
