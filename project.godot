@@ -96,6 +96,13 @@ ui_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="characters"
+2d_physics/layer_3="doors"
+2d_physics/layer_4="interactables"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

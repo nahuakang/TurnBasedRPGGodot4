@@ -5,12 +5,22 @@ extends CharacterBody2D
 #############
 
 @onready var animated_player := $AnimatedSprite2D
+@onready var interactable_detector: Area2D = $InteractableDetector
+
+#############
+## CONSTANTS
+#############
 
 const SPEED: float = 100.0
 
 #############
 ## OVERRIDES
 #############
+
+func _ready() -> void:
+	# Set the default InteractableDetector rotation to facing down
+	interactable_detector.rotation = Vector2.DOWN.angle()
+
 
 func _physics_process(_delta: float) -> void:
 	move_player()
@@ -19,8 +29,14 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
-		Events.request_show_message.emit("Here is a new message")
-#		SceneStack.push("res://battle/battle.tscn")
+		var interactables: Array = interactable_detector.get_overlapping_bodies()
+
+		for interactable in interactables:
+			if not interactable is Interactable:
+				continue
+
+			interactable._run_interaction()
+			get_viewport().set_input_as_handled()
 
 
 ###########
@@ -37,6 +53,8 @@ func move_player() -> void:
 func animate_player() -> void:
 	if is_moving():
 		animate_walk()
+		# Rotate the InteractableDetector based on the velocity's angle
+		interactable_detector.rotation = velocity.angle()
 	else:
 		animate_idle()
 
