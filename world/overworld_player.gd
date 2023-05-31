@@ -19,7 +19,8 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("ui_accept"):
-		SceneStack.push("res://battle/battle.tscn")
+		Events.request_show_message.emit("Here is a new message")
+#		SceneStack.push("res://battle/battle.tscn")
 
 
 ###########

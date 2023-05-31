@@ -14,7 +14,7 @@ extends CenterContainer
 func _ready() -> void:
 	# Process the message display even when the game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	show_message("This is a new message!")
+	Events.request_show_message.connect(show_message)
 
 
 func _input(event: InputEvent) -> void:
