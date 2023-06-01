@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpkose037kk0o"]
+
+[ext_resource type="Texture2D" uid="uid://dcoo24s8xten5" path="res://assets/sprites/DialogShadow.png" id="1_b0ji4"]
+[ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_oixjd"]
+[ext_resource type="Texture2D" uid="uid://bsxqfaknx665y" path="res://assets/sprites/PortraitEdge.png" id="3_fnlqo"]
+[ext_resource type="Texture2D" uid="uid://hyt464g7gidt" path="res://assets/sprites/StumpyPortrait.png" id="4_vwikp"]
+
+[node name="DialogUI" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.54902)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oixjd")
+texture = ExtResource("1_b0ji4")
+
+[node name="HboxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogContainer" type="HBoxContainer" parent="HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="LeftEdge" type="TextureRect" parent="HboxContainer/DialogContainer"]
+layout_mode = 2
+texture = ExtResource("3_fnlqo")
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HboxContainer/DialogContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HboxContainer/DialogContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextBox" type="RichTextLabel" parent="HboxContainer/DialogContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PortraitContainer" type="HBoxContainer" parent="HboxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="HboxContainer/PortraitContainer"]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="HboxContainer/PortraitContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_vwikp")
+
+[node name="MarginContainer" type="MarginContainer" parent="HboxContainer/PortraitContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="RightEdge" type="TextureRect" parent="HboxContainer/PortraitContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_fnlqo")
+stretch_mode = 2
+flip_h = true
