@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brjykyw5h2jpy" path="res://world/item_pickup.tscn" id="5_rskpt"]
 [ext_resource type="Resource" uid="uid://cjitjo12n3723" path="res://items/apple_item.tres" id="6_41kfg"]
 [ext_resource type="PackedScene" uid="uid://bmlij6kt474sr" path="res://ui/overworld_ui.tscn" id="7_4qecf"]
-[ext_resource type="PackedScene" uid="uid://bftqelfxphfkr" path="res://world/npc.tscn" id="8_o7gaa"]
+[ext_resource type="PackedScene" uid="uid://e1m7bydxhl" path="res://world/stumpy_npc.tscn" id="8_kgyrl"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -36,5 +36,5 @@ item = ExtResource("6_41kfg")
 
 [node name="OverworldUI" parent="." instance=ExtResource("7_4qecf")]
 
-[node name="NPC" parent="." instance=ExtResource("8_o7gaa")]
-position = Vector2(256, 120)
+[node name="StumpyNPC" parent="." instance=ExtResource("8_kgyrl")]
+position = Vector2(216, 32)
