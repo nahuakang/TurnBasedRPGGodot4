@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://xvyypuyja63a"]
+
+[ext_resource type="Texture2D" uid="uid://hyt464g7gidt" path="res://assets/sprites/StumpyPortrait.png" id="1_0p2an"]
+[ext_resource type="Script" path="res://characters/character.gd" id="1_xcbj7"]
+
+[resource]
+script = ExtResource("1_xcbj7")
+name = "Stumpy"
+portrait = ExtResource("1_0p2an")

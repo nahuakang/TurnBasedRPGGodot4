@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpkose037kk0o"]
+[gd_scene load_steps=6 format=3 uid="uid://bpkose037kk0o"]
 
 [ext_resource type="Texture2D" uid="uid://dcoo24s8xten5" path="res://assets/sprites/DialogShadow.png" id="1_b0ji4"]
 [ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_oixjd"]
+[ext_resource type="Script" path="res://ui/dialog_ui.gd" id="3_7byom"]
 [ext_resource type="Texture2D" uid="uid://bsxqfaknx665y" path="res://assets/sprites/PortraitEdge.png" id="3_fnlqo"]
 [ext_resource type="Texture2D" uid="uid://hyt464g7gidt" path="res://assets/sprites/StumpyPortrait.png" id="4_vwikp"]
 
 [node name="DialogUI" type="TextureRect"]
+process_mode = 3
 self_modulate = Color(1, 1, 1, 0.54902)
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_oixjd")
 texture = ExtResource("1_b0ji4")
+script = ExtResource("3_7byom")
 
 [node name="HboxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -48,7 +51,9 @@ theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="TextBox" type="RichTextLabel" parent="HboxContainer/DialogContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+bbcode_enabled = true
 
 [node name="PortraitContainer" type="HBoxContainer" parent="HboxContainer"]
 layout_mode = 2
@@ -58,6 +63,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="HboxContainer/PortraitContainer/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("4_vwikp")
 
