@@ -9,17 +9,11 @@ const CHAR_DISPLAY_DURATION: float = 0.08
 #############
 ## VARIABLES
 #############
-@onready var text_box := %TextBox
-@onready var portrait := %Portrait
+@onready var text_box: RichTextLabel = %TextBox
+@onready var portrait: TextureRect = %Portrait
 
 var typer: Tween
 var is_typing: bool = false
-
-###########
-## SIGNALS
-###########
-
-signal dialog_finished
 
 #############
 ## OVERRIDES
@@ -29,9 +23,7 @@ func _ready() -> void:
 	# This node should always process, even when game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	# Test that the dialog works
-	var elizabeth_character: Character = load("res://characters/elizabeth_character.tres")
-	type_dialog("Hi here is some test dialog.", elizabeth_character)
+	Events.request_show_dialog.connect(type_dialog)
 
 
 func _unhandled_input(event) -> void:
@@ -53,7 +45,8 @@ func _unhandled_input(event) -> void:
 		hide()
 		get_viewport().set_input_as_handled()
 		get_tree().paused = false
-		dialog_finished.emit()
+
+		Events.dialog_finished.emit()
 
 
 ###########
@@ -71,9 +64,9 @@ func type_dialog(bbcode: String, character: Character) -> void:
 
 	# Must await so that `get_total_character_count` can be correct without
 	# extra BBCode
-	await get_tree().process_frame
+#	await get_tree().process_frame
 
-	var total_characters: int = text_box.get_total_character_count()
+	var total_characters: int = text_box.text.length()
 	var duration: float = total_characters * CHAR_DISPLAY_DURATION
 
 	typer = create_tween()
