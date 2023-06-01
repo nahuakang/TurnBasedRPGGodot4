@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1g63qdlq0ae5"]
+[gd_scene load_steps=9 format=3 uid="uid://c1g63qdlq0ae5"]
 
 [ext_resource type="PackedScene" uid="uid://7ekxn24buju2" path="res://world/overworld_player.tscn" id="1_5babj"]
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="2_adq74"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brjykyw5h2jpy" path="res://world/item_pickup.tscn" id="5_rskpt"]
 [ext_resource type="Resource" uid="uid://cjitjo12n3723" path="res://items/apple_item.tres" id="6_41kfg"]
 [ext_resource type="PackedScene" uid="uid://bmlij6kt474sr" path="res://ui/overworld_ui.tscn" id="7_4qecf"]
+[ext_resource type="PackedScene" uid="uid://bftqelfxphfkr" path="res://world/npc.tscn" id="8_o7gaa"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -34,3 +35,6 @@ position = Vector2(136, 104)
 item = ExtResource("6_41kfg")
 
 [node name="OverworldUI" parent="." instance=ExtResource("7_4qecf")]
+
+[node name="NPC" parent="." instance=ExtResource("8_o7gaa")]
+position = Vector2(256, 120)

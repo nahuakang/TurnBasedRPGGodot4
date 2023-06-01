@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bftqelfxphfkr"]
+
+[ext_resource type="Texture2D" uid="uid://cbr3psiim34p7" path="res://assets/sprites/AxeStump.png" id="1_k50xm"]
+[ext_resource type="Script" path="res://world/npc.gd" id="1_pr7cc"]
+[ext_resource type="Resource" uid="uid://xvyypuyja63a" path="res://characters/stumpy_character.tres" id="2_rgesn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_si00v"]
+radius = 9.0
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 9
+script = ExtResource("1_pr7cc")
+character = ExtResource("2_rgesn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k50xm")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_si00v")
