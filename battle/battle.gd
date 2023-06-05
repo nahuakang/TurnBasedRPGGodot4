@@ -43,6 +43,11 @@ var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 #############
 
 func _ready() -> void:
+	var encounter_class: ClassStats = ReferenceStash.encounter_class
+
+	if encounter_class is ClassStats:
+		enemy_battle_unit.stats = encounter_class.duplicate()
+
 	player_battle_unit_info.stats = player_battle_unit.stats
 	enemy_battle_unit_info.stats = enemy_battle_unit.stats
 

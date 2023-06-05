@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1g63qdlq0ae5"]
+[gd_scene load_steps=11 format=3 uid="uid://c1g63qdlq0ae5"]
 
 [ext_resource type="PackedScene" uid="uid://7ekxn24buju2" path="res://world/overworld_player.tscn" id="1_5babj"]
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="2_adq74"]
@@ -8,6 +8,8 @@
 [ext_resource type="Resource" uid="uid://cjitjo12n3723" path="res://items/apple_item.tres" id="6_41kfg"]
 [ext_resource type="PackedScene" uid="uid://bmlij6kt474sr" path="res://ui/overworld_ui.tscn" id="7_4qecf"]
 [ext_resource type="PackedScene" uid="uid://e1m7bydxhl" path="res://world/stumpy_npc.tscn" id="8_kgyrl"]
+[ext_resource type="PackedScene" uid="uid://burq6rw67li2s" path="res://world/random_encounters.tscn" id="9_dlwal"]
+[ext_resource type="Resource" uid="uid://dulhmh0tatbv0" path="res://class_stats/werewolf_class_stats.tres" id="10_bapoi"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -38,3 +40,7 @@ item = ExtResource("6_41kfg")
 
 [node name="StumpyNPC" parent="." instance=ExtResource("8_kgyrl")]
 position = Vector2(216, 32)
+
+[node name="RandomEncounters" parent="." instance=ExtResource("9_dlwal")]
+position = Vector2(224, 128)
+encounters = Array[Resource]([ExtResource("10_bapoi")])

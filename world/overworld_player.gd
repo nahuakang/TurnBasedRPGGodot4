@@ -1,17 +1,24 @@
 extends CharacterBody2D
 
 #############
+## CONSTANTS
+#############
+
+const SPEED: float = 100.0
+const MAX_ENCOUNTER_METER: float = 100.0
+const MIN_ENCOUNTER_CHANCE: float = 0.1
+const ENCOUNTER_CHANCE_DELTA: float = 0.1
+const ENCOUNTER_METER_REDUCTION_AMOUNT: float = 75.0
+
+#############
 ## VARIABLES
 #############
 
 @onready var animated_player := $AnimatedSprite2D
 @onready var interactable_detector: Area2D = $InteractableDetector
 
-#############
-## CONSTANTS
-#############
-
-const SPEED: float = 100.0
+var encounter_meter := MAX_ENCOUNTER_METER
+var encounter_chance := MIN_ENCOUNTER_CHANCE
 
 #############
 ## OVERRIDES
@@ -22,9 +29,9 @@ func _ready() -> void:
 	interactable_detector.rotation = Vector2.DOWN.angle()
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	move_player()
-	animate_player()
+	animate_player(delta)
 
 
 func _unhandled_input(event: InputEvent):
@@ -50,13 +57,40 @@ func move_player() -> void:
 	move_and_slide()
 
 
-func animate_player() -> void:
+func animate_player(delta: float) -> void:
 	if is_moving():
 		animate_walk()
 		# Rotate the InteractableDetector based on the velocity's angle
 		interactable_detector.rotation = velocity.angle()
+
+		encounter_check(delta)
 	else:
 		animate_idle()
+
+
+func encounter() -> void:
+	var random_encounters := ReferenceStash.random_encounters
+	if random_encounters.is_empty():
+		return
+
+	random_encounters.shuffle()
+	ReferenceStash.encounter_class = random_encounters.front()
+
+	# If encounters, enter battle scene
+	SceneStack.push("res://battle/battle.tscn")
+
+
+func encounter_check(delta: float) -> void:
+	encounter_meter -= ENCOUNTER_METER_REDUCTION_AMOUNT * delta
+	if encounter_meter <= 0:
+		encounter_meter = MAX_ENCOUNTER_METER
+
+		if Math.chance(encounter_chance):
+			encounter_chance = MIN_ENCOUNTER_CHANCE
+			encounter()
+
+		else:
+			encounter_chance = min(encounter_chance + ENCOUNTER_CHANCE_DELTA, 1.0)
 
 
 func animate_walk() -> void:

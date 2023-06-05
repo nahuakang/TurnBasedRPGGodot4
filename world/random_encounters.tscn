@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://burq6rw67li2s"]
+
+[ext_resource type="Texture2D" uid="uid://bxb6vl27ye2n3" path="res://assets/sprites/RandomEncountersIcon.png" id="1_rvgtn"]
+[ext_resource type="Script" path="res://world/random_encounters.gd" id="2_x4n44"]
+
+[node name="RandomEncounters" type="Sprite2D"]
+texture = ExtResource("1_rvgtn")
+script = ExtResource("2_x4n44")
