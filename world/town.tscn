@@ -43,4 +43,4 @@ position = Vector2(216, 32)
 
 [node name="RandomEncounters" parent="." instance=ExtResource("9_dlwal")]
 position = Vector2(224, 128)
-encounters = Array[Resource]([ExtResource("10_bapoi")])
+encounters = Array[Resource("res://class_stats/class_stats.gd")]([ExtResource("10_bapoi")])

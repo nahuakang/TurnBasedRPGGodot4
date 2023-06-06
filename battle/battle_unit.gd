@@ -46,7 +46,7 @@ func set_stats(value: ClassStats) -> void:
 ## METHODS
 ###########
 
-func melee_attack(target: BattleUnit) -> void:
+func melee_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void:
 	async_turn_pool.add(self)
 
 	# Set Z index to make attacker render on top
@@ -61,7 +61,7 @@ func melee_attack(target: BattleUnit) -> void:
 	await battle_animations.animation_finished
 
 	# Deal damage to the target
-	deal_damage(target)
+	deal_damage(target, battle_action)
 
 	# Target takes hit; `BattleUnit.take_hit` is a coroutine that runs separately from `melee`
 	target.take_hit(self)
@@ -84,8 +84,14 @@ func melee_attack(target: BattleUnit) -> void:
 	async_turn_pool.remove(self)
 
 
-func deal_damage(target: BattleUnit) -> void:
-	var damage = ((stats.level * 3 + (1 - target.stats.defense * 0.05)) / 2) * stats.attack / 6
+func deal_damage(target: BattleUnit, battle_action: DamageBattleAction) -> void:
+	var damage = (
+		(
+			(stats.level * 3 + (1 - target.stats.defense * 0.05)) / 2
+		) * (
+			stats.attack + battle_action.damage / 5
+		) / 10
+	)
 	target.stats.set_health(target.stats.health - damage)
 
 

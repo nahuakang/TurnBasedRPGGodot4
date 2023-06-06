@@ -116,7 +116,8 @@ func _on_ally_turn_started() -> void:
 	match menu_option:
 		BattleMenu.MENU_OPTION.ACTION:
 			battle_camera.focus_target(enemy_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
-			player_battle_unit.melee_attack(enemy_battle_unit)
+			var battle_action = player_battle_unit.stats.battle_actions.front()
+			player_battle_unit.melee_attack(enemy_battle_unit, battle_action)
 
 		BattleMenu.MENU_OPTION.ITEM:
 			print("TODO: Item")
@@ -138,7 +139,8 @@ func _on_enemy_turn_started() -> void:
 		return
 
 	battle_camera.focus_target(player_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
-	enemy_battle_unit.melee_attack(player_battle_unit)
+	var battle_action = enemy_battle_unit.stats.battle_actions.front()
+	enemy_battle_unit.melee_attack(player_battle_unit, battle_action)
 
 
 func _on_async_turn_pool_turn_over() -> void:

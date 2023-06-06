@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://dulhmh0tatbv0"]
+[gd_resource type="Resource" script_class="ClassStats" load_steps=4 format=3 uid="uid://dulhmh0tatbv0"]
 
+[ext_resource type="Resource" uid="uid://ce7spjt6e3q4d" path="res://battle_actions/melee_battle_action.tres" id="1_6llmo"]
 [ext_resource type="PackedScene" uid="uid://o6lcdf86yxbe" path="res://battle/werewolf_battle_animations.tscn" id="1_qkvtn"]
 [ext_resource type="Script" path="res://class_stats/class_stats.gd" id="1_y5wjn"]
 
@@ -9,4 +10,5 @@ name = "Werewolf"
 max_health = 6
 attack = 10
 defense = 7
+battle_actions = Array[Resource("res://battle_actions/battle_action.gd")]([ExtResource("1_6llmo")])
 battle_animations = ExtResource("1_qkvtn")
