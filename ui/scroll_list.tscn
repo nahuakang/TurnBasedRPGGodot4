@@ -18,7 +18,7 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 28)
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 theme = ExtResource("1_7scqo")
 horizontal_scroll_mode = 0
