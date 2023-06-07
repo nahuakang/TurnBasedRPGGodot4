@@ -48,3 +48,7 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[connection signal="menu_option_selected" from="BattleMenu" to="." method="_on_battle_menu_menu_option_selected"]
+[connection signal="resource_selected" from="BattleMenu/MenuPosition/MenuContainer/ActionList" to="." method="_on_action_list_resource_selected"]
+[connection signal="resource_selected" from="BattleMenu/MenuPosition/MenuContainer/ItemList" to="." method="_on_item_list_resource_selected"]

@@ -14,29 +14,33 @@ const RESOURCE_BUTTON_SCENE: PackedScene = preload("res://ui/resource_button.tsc
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var button_container: VBoxContainer = %ButtonContainer
 
-var elizabeth_stats: PlayerClassStats = ReferenceStash.elizabeth_stats
+###########
+## SIGNALS
+###########
+
+signal resource_selected(resource: Resource)
 
 #############
 ## OVERRIDES
 #############
 
 func _ready():
-	fill(elizabeth_stats.battle_actions)
-	connect_scroll_children()
-
-	button_container.get_child(0).grab_focus()
+	pass
+#	fill(elizabeth_stats.battle_actions)
+#	connect_scroll_children()
 
 
 ###########
 ## METHODS
 ###########
 
-func fill(resource_list: Array[BattleAction]) -> void:
+func fill(resource_list: Array[Resource]) -> void:
 	for resource in resource_list:
-		print(resource.name)
 		var resource_button: ResourceButton = add_resource_button()
 		resource_button.resource = resource
 		resource_button.text = resource.name
+
+	connect_scroll_children()
 
 
 func add_resource_button() -> ResourceButton:
@@ -68,6 +72,9 @@ func get_focused_scroll_amount() -> int:
 	return focused_scroll_amount
 
 
+func grab_button_focus() -> void:
+	button_container.get_child(0).grab_focus()
+
 #####################
 ## SIGNALS CALLBACKS
 #####################
@@ -88,4 +95,4 @@ func _on_button_focused() -> void:
 
 
 func _on_resource_selected(resource: Resource) -> void:
-	print(resource.name)
+	resource_selected.emit(resource)

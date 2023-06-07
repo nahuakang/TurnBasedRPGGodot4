@@ -9,7 +9,7 @@ class_name ClassStats
 @export var max_health: int: set = set_max_health # Used to set the `.tres` value
 @export var attack: int
 @export var defense: int
-@export var battle_actions: Array[BattleAction]
+@export var battle_actions: Array[Resource]
 @export var battle_animations: PackedScene
 
 #############

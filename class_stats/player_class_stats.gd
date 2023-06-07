@@ -14,6 +14,12 @@ const MAX_EXPERIENCE: int = 100
 var experience: int = 0: set = set_experience
 
 ###########
+## EXPORTS
+###########
+
+@export var inventory: Inventory
+
+###########
 ## METHODS
 ###########
 

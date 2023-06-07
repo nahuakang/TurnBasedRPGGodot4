@@ -120,11 +120,9 @@ func _on_ally_turn_started() -> void:
 			player_battle_unit.melee_attack(enemy_battle_unit, battle_action)
 
 		BattleMenu.MENU_OPTION.ITEM:
-			print("TODO: Item")
 			turn_manager.advance_turn()
 
 		BattleMenu.MENU_OPTION.RUN:
-			print("TODO: Run (Can add a coin flip on damage upon escape)")
 			exit_battle()
 
 	battle_menu.hide_menu()  # No need to await here
