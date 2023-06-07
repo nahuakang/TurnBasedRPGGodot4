@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cju7ll34rpnfu"]
+[gd_scene load_steps=3 format=3 uid="uid://cju7ll34rpnfu"]
 
 [ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_od4y2"]
+[ext_resource type="Script" path="res://ui/parent_button.gd" id="2_67iv6"]
 
 [node name="ParentButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_od4y2")
+script = ExtResource("2_67iv6")
