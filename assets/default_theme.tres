@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bytiyxp3n1j8y"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bytiyxp3n1j8y"]
 
 [ext_resource type="Texture2D" uid="uid://dqhxrrloaq6q1" path="res://assets/sprites/Textbox9Slice.png" id="1_b5rmn"]
 [ext_resource type="FontVariation" uid="uid://cd0513j1qqupo" path="res://assets/westwick_font.tres" id="1_xq7rl"]
+[ext_resource type="Texture2D" uid="uid://vxbjdyenvsij" path="res://assets/sprites/ScrollBarButton.png" id="2_l5cuu"]
+[ext_resource type="Texture2D" uid="uid://b6vblgytvljne" path="res://assets/sprites/ScrollBarBackground.png" id="3_ht3q5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl27e"]
 
@@ -13,12 +15,59 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2hax"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gshrb"]
+load_path = "res://.godot/imported/Textbox9Slice.png-6cea51abaa73557f966d4e3f56db15ad.ctex"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nhxhv"]
-texture = ExtResource("1_b5rmn")
+texture = SubResource("CompressedTexture2D_gshrb")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xoyin"]
+texture = ExtResource("2_l5cuu")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5dss"]
+texture = ExtResource("1_b5rmn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klhbq"]
+texture = ExtResource("1_b5rmn")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ciff"]
+texture = ExtResource("3_ht3q5")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [resource]
 default_font = ExtResource("1_xq7rl")
@@ -33,3 +82,7 @@ Button/styles/hover = SubResource("StyleBoxEmpty_up540")
 Button/styles/normal = SubResource("StyleBoxEmpty_5hrby")
 Button/styles/pressed = SubResource("StyleBoxEmpty_g2hax")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_nhxhv")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_xoyin")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_s5dss")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_klhbq")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_0ciff")
