@@ -6,4 +6,4 @@
 script = ExtResource("1_0mxq8")
 type = 1
 damage = 5
-name = ""
+name = "Ranged"

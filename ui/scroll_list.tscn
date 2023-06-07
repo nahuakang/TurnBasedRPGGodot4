@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cub7ww8tasctp"]
+[gd_scene load_steps=3 format=3 uid="uid://cub7ww8tasctp"]
 
 [ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_7scqo"]
 [ext_resource type="Script" path="res://ui/scroll_list.gd" id="1_hg7oy"]
-[ext_resource type="PackedScene" uid="uid://buyno527k2tph" path="res://ui/resource_button.tscn" id="3_h2mrn"]
 
 [node name="ScrollList" type="PanelContainer"]
 offset_right = 40.0
@@ -33,15 +32,3 @@ theme_override_constants/margin_right = 6
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 1
-
-[node name="ResourceButton" parent="MarginContainer/ScrollContainer/MarginContainer/ButtonContainer" instance=ExtResource("3_h2mrn")]
-layout_mode = 2
-text = "Button"
-
-[node name="ResourceButton2" parent="MarginContainer/ScrollContainer/MarginContainer/ButtonContainer" instance=ExtResource("3_h2mrn")]
-layout_mode = 2
-text = "Button"
-
-[node name="ResourceButton3" parent="MarginContainer/ScrollContainer/MarginContainer/ButtonContainer" instance=ExtResource("3_h2mrn")]
-layout_mode = 2
-text = "Button"
