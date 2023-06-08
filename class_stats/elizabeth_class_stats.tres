@@ -13,5 +13,5 @@ name = "Elizabeth"
 max_health = 10
 attack = 8
 defense = 8
-battle_actions = Array[Resource("res://battle_actions/battle_action.gd")]([ExtResource("1_l46et"), ExtResource("2_ykaor")])
+battle_actions = Array[Resource]([ExtResource("1_l46et"), ExtResource("2_ykaor")])
 battle_animations = ExtResource("1_f07vl")

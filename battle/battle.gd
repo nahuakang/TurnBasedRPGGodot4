@@ -22,7 +22,7 @@ const CAMERA_TWEEN_FOCUS_ZOOM_DEFAULT := Vector2.ONE
 @onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 @onready var level_up_ui: LevelUpUI = %LevelUpUI
-@onready var battle_menu: BattleMenu = %BattleMenu
+@onready var battle_menu_manager: BattleMenuManager = %BattleMenuManager
 @onready var battle_camera: BattleCamera = $BattleCamera
 # The camera position to return to after tweening camera movement for attack
 @onready var center_position: Vector2 = $CenterRoot/CenterPoint.global_position
@@ -73,7 +73,7 @@ func battle_won() -> void:
 	await timer.timeout
 
 	# Coercing into PlayerClassStats from ClassStats
-	var player_stats: PlayerClassStats = player_battle_unit.stats
+#	var player_stats: PlayerClassStats = player_battle_unit.stats
 
 	var previous_level := player_battle_unit.stats.level
 	# TODO: This is hardcoded experience
@@ -109,23 +109,20 @@ func _on_ally_turn_started() -> void:
 		return
 
 	# Using `BattleMenu` to handle player input in the turn
-	await battle_menu.show_menu()
+	await battle_menu_manager.show_battle_menu()
 
-	battle_menu.grab_menu_focus()
-	var menu_option: BattleMenu.MENU_OPTION = await battle_menu.menu_option_selected
-	match menu_option:
-		BattleMenu.MENU_OPTION.ACTION:
-			battle_camera.focus_target(enemy_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
-			var battle_action = player_battle_unit.stats.battle_actions.front()
-			player_battle_unit.melee_attack(enemy_battle_unit, battle_action)
+	var selected_resource: Resource = await battle_menu_manager.battle_menu_resource_selected
 
-		BattleMenu.MENU_OPTION.ITEM:
-			turn_manager.advance_turn()
+	if selected_resource is DamageBattleAction:
+		battle_camera.focus_target(enemy_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
+		var battle_action = player_battle_unit.stats.battle_actions.front()
+		player_battle_unit.melee_attack(enemy_battle_unit, battle_action)
 
-		BattleMenu.MENU_OPTION.RUN:
-			exit_battle()
+	elif selected_resource.name == "run":
+		exit_battle()
 
-	battle_menu.hide_menu()  # No need to await here
+	elif selected_resource.name == "defend":
+		turn_manager.advance_turn()
 
 
 func _on_enemy_turn_started() -> void:

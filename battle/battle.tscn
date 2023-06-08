@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bdoqjolgd1scb" path="res://battle/battle_camera.tscn" id="13_3axkf"]
 [ext_resource type="PackedScene" uid="uid://bgtpiv2wsh8t8" path="res://ui/battle_unit_info.tscn" id="13_fy6nq"]
 [ext_resource type="PackedScene" uid="uid://deerril57b1c5" path="res://ui/level_up_ui.tscn" id="14_3ola2"]
-[ext_resource type="PackedScene" uid="uid://b7pdbhyuurbn5" path="res://ui/battle_menu.tscn" id="15_l2835"]
+[ext_resource type="PackedScene" uid="uid://bqcql3h7t1xu4" path="res://ui/battle_menu_manager.tscn" id="16_hi8aj"]
 
 [sub_resource type="Animation" id="Animation_3qyng"]
 length = 0.001
@@ -252,9 +252,8 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="BattleMenu" parent="BattleUI" instance=ExtResource("15_l2835")]
+[node name="BattleMenuManager" parent="BattleUI" instance=ExtResource("16_hi8aj")]
 unique_name_in_owner = true
-visible = false
 
 [node name="FlashLayer" type="CanvasLayer" parent="."]
 layer = 100

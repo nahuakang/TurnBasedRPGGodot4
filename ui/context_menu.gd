@@ -16,18 +16,6 @@ enum CONTEXT_OPTION {
 
 signal option_selected(option: CONTEXT_OPTION)
 
-#############
-## OVERRIDES
-#############
-
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(delta):
-	pass
-
-
 #####################
 ## SIGNALS CALLBACKS
 #####################
