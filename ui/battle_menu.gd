@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends FocusMenu
 class_name BattleMenu
 
 #############
@@ -35,10 +35,6 @@ signal menu_option_selected(option: MENU_OPTION)
 #############
 ## METHODS
 #############
-
-func grab_action_focus() -> void:
-	action_button.grab_focus()
-
 
 func show_menu() -> void:
 	show()

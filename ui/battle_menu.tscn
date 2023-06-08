@@ -26,6 +26,7 @@ grow_vertical = 0
 theme = ExtResource("1_422go")
 theme_override_constants/separation = 0
 script = ExtResource("2_gnu56")
+focus_nodes = Array[NodePath]([NodePath("PanelContainer/MarginContainer/HBoxContainer/ActionButton"), NodePath("PanelContainer/MarginContainer/HBoxContainer/ItemButton"), NodePath("PanelContainer/MarginContainer/HBoxContainer/RunButton")])
 metadata/_edit_group_ = true
 
 [node name="LeftEdge" type="TextureRect" parent="."]

@@ -10,5 +10,5 @@ name = "Werewolf"
 max_health = 6
 attack = 10
 defense = 7
-battle_actions = Array[Resource("res://battle_actions/battle_action.gd")]([ExtResource("1_6llmo")])
+battle_actions = Array[Resource]([ExtResource("1_6llmo")])
 battle_animations = ExtResource("1_qkvtn")

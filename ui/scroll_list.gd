@@ -1,4 +1,4 @@
-extends PanelContainer
+extends FocusMenu
 class_name ScrollList
 
 #############
@@ -46,6 +46,10 @@ func fill(resource_list: Array[Resource]) -> void:
 func add_resource_button() -> ResourceButton:
 	var resource_button: ResourceButton = RESOURCE_BUTTON_SCENE.instantiate()
 	button_container.add_child(resource_button)
+
+	# Add the button to the `focus_nodes` dynamically
+	focus_nodes.append(resource_button.get_path())
+
 	resource_button.resource_selected.connect(_on_resource_selected)
 	return resource_button
 
@@ -53,6 +57,8 @@ func add_resource_button() -> ResourceButton:
 func clear() -> void:
 	for button in button_container.get_children():
 		button.queue_free()
+
+	focus_nodes.clear()
 
 
 func connect_scroll_children() -> void:
@@ -71,9 +77,6 @@ func get_focused_scroll_amount() -> int:
 
 	return focused_scroll_amount
 
-
-func grab_button_focus() -> void:
-	button_container.get_child(0).grab_focus()
 
 #####################
 ## SIGNALS CALLBACKS
