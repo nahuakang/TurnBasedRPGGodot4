@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_7fh6t")
 name = "run"
+description = "Run away"

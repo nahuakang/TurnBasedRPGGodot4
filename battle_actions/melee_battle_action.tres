@@ -7,3 +7,4 @@ script = ExtResource("1_7fmw7")
 type = 0
 damage = 5
 name = "Melee"
+description = "Basic melee action"

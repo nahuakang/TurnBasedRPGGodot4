@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_tm5rl")
 name = "use_item"
+description = "Use an item during the battle"

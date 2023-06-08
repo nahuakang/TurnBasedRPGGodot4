@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_unb5s")
 name = "Defend"
+description = "Basic defend action"

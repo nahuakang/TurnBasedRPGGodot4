@@ -7,3 +7,4 @@ script = ExtResource("1_0mxq8")
 type = 1
 damage = 5
 name = "Ranged"
+description = "A ranged battle action"
