@@ -111,7 +111,7 @@ func _on_ally_turn_started() -> void:
 	# Using `BattleMenu` to handle player input in the turn
 	await battle_menu.show_menu()
 
-	battle_menu.grab_action_focus()
+	battle_menu.grab_menu_focus()
 	var menu_option: BattleMenu.MENU_OPTION = await battle_menu.menu_option_selected
 	match menu_option:
 		BattleMenu.MENU_OPTION.ACTION:
