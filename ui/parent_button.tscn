@@ -7,5 +7,4 @@
 offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_od4y2")
-alignment = 0
 script = ExtResource("2_67iv6")

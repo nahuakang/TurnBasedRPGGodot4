@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://ui/resource_button.gd" id="2_f0qt0"]
 
 [node name="ResourceButton" instance=ExtResource("1_4j4gm")]
+alignment = 0
 script = ExtResource("2_f0qt0")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
