@@ -65,6 +65,8 @@ func _on_battle_menu_menu_option_selected(option: int) -> void:
 			ui_stack.push(item_list)
 
 		BattleMenu.MENU_OPTION.RUN:
+			battle_menu.hide_menu()
+			battle_menu.release_focus()
 			battle_menu_resource_selected.emit(RUN_BATTLE_ACTION)
 
 
