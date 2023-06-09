@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqcql3h7t1xu4"]
+[gd_scene load_steps=7 format=3 uid="uid://bqcql3h7t1xu4"]
 
 [ext_resource type="Script" path="res://ui/battle_menu_manager.gd" id="1_trhjk"]
 [ext_resource type="PackedScene" uid="uid://b7pdbhyuurbn5" path="res://ui/battle_menu.tscn" id="2_mwdnl"]
 [ext_resource type="PackedScene" uid="uid://cub7ww8tasctp" path="res://ui/scroll_list.tscn" id="3_lhnd5"]
 [ext_resource type="PackedScene" uid="uid://ctvy63bh3b158" path="res://ui/context_menu.tscn" id="4_8g0i2"]
+[ext_resource type="PackedScene" uid="uid://nxchr562c1cd" path="res://ui/items_list.tscn" id="4_umioi"]
 [ext_resource type="PackedScene" uid="uid://bmr78rrctc33e" path="res://ui/info_menu.tscn" id="5_f834g"]
 
 [node name="BattleMenuManager" type="Control"]
@@ -46,10 +47,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="ItemList" parent="BattleMenu/MenuPosition/MenuContainer" instance=ExtResource("3_lhnd5")]
+[node name="ItemsList" parent="BattleMenu/MenuPosition/MenuContainer" instance=ExtResource("4_umioi")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+focus_nodes = Array[NodePath]([])
 
 [node name="ContextMenu" parent="BattleMenu/MenuPosition/MenuContainer" instance=ExtResource("4_8g0i2")]
 unique_name_in_owner = true
@@ -63,5 +65,5 @@ layout_mode = 2
 
 [connection signal="menu_option_selected" from="BattleMenu" to="." method="_on_battle_menu_menu_option_selected"]
 [connection signal="resource_selected" from="BattleMenu/MenuPosition/MenuContainer/ActionList" to="." method="_on_action_list_resource_selected"]
-[connection signal="resource_selected" from="BattleMenu/MenuPosition/MenuContainer/ItemList" to="." method="_on_item_list_resource_selected"]
+[connection signal="resource_selected" from="BattleMenu/MenuPosition/MenuContainer/ItemsList" to="." method="_on_items_list_resource_selected"]
 [connection signal="option_selected" from="BattleMenu/MenuPosition/MenuContainer/ContextMenu" to="." method="_on_context_menu_option_selected"]

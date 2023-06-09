@@ -13,7 +13,7 @@ const RUN_BATTLE_ACTION = preload("res://battle_actions/run_battle_action.tres")
 
 @onready var battle_menu: BattleMenu = %BattleMenu
 @onready var action_list: ScrollList = %ActionList
-@onready var item_list: ScrollList = %ItemList
+@onready var items_list: ScrollList = %ItemsList
 @onready var context_menu: ContextMenu = %ContextMenu
 @onready var info_menu: InfoMenu = %InfoMenu
 
@@ -35,7 +35,6 @@ signal battle_menu_resource_selected(selected_resource: Resource)
 
 func _ready():
 	action_list.fill(elizabeth_stats.battle_actions)
-	item_list.fill(elizabeth_stats.inventory.items)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -62,7 +61,7 @@ func _on_battle_menu_menu_option_selected(option: int) -> void:
 			ui_stack.push(action_list)
 
 		BattleMenu.MENU_OPTION.ITEM:
-			ui_stack.push(item_list)
+			ui_stack.push(items_list)
 
 		BattleMenu.MENU_OPTION.RUN:
 			battle_menu.hide_menu()
@@ -75,7 +74,7 @@ func _on_action_list_resource_selected(resource: BattleAction) -> void:
 	selected_resource = resource
 
 
-func _on_item_list_resource_selected(resource: Item) -> void:
+func _on_items_list_resource_selected(resource: Item) -> void:
 	ui_stack.push(context_menu)
 	selected_resource = resource
 
