@@ -6,16 +6,25 @@
 extends Node2D
 class_name BattleUnit
 
-@export var stats: ClassStats: set = set_stats
-
-@onready var root_position: Vector2 = global_position # Position before attack
+#############
+## CONSTANTS
+#############
 
 const APPROACH_OFFSET: int = 48          # Offset to not cover the attackee
 const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 
+#############
+## VARIABLES
+#############
+
+@export var stats: ClassStats: set = set_stats
+@onready var root_position: Vector2 = global_position # Position before attack
+@onready var battle_shield: Node2D = $BattleShield
+
 var battle_animations: BattleAnimations
+var defend: bool = false : set = set_defend
 var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 
 #############
@@ -41,6 +50,12 @@ func set_stats(value: ClassStats) -> void:
 		battle_animations.queue_free()
 		battle_animations = stats.battle_animations.instantiate()
 		add_child(battle_animations)
+
+
+func set_defend(value: bool) -> void:
+	defend = value
+	battle_shield.visible = defend
+
 
 ###########
 ## METHODS
@@ -84,7 +99,7 @@ func melee_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void
 	async_turn_pool.remove(self)
 
 
-func use_item(target: BattleUnit, item: Item) -> void:
+func use_item(_target: BattleUnit, item: Item) -> void:
 	async_turn_pool.add(self)
 	battle_animations.play("item_anticipation")
 	await battle_animations.animation_finished
@@ -106,6 +121,11 @@ func deal_damage(target: BattleUnit, battle_action: DamageBattleAction) -> void:
 			stats.attack + battle_action.damage / 5
 		) / 10
 	)
+
+	if target.defend:
+		target.defend = false # Turn off defend
+		damage = round(damage / 2)
+
 	target.stats.set_health(target.stats.health - damage)
 
 

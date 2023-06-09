@@ -51,7 +51,6 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-focus_nodes = Array[NodePath]([])
 
 [node name="ContextMenu" parent="BattleMenu/MenuPosition/MenuContainer" instance=ExtResource("4_8g0i2")]
 unique_name_in_owner = true

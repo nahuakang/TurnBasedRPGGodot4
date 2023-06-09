@@ -10,6 +10,7 @@ const CAMERA_TWEEN_OFFSET: int = 32
 const CAMERA_TWEEN_ZOOMIN_SCALE: float = 1.25
 const CAMERA_TWEEN_FOCUS_ZOOM_IN := Vector2(CAMERA_TWEEN_ZOOMIN_SCALE, CAMERA_TWEEN_ZOOMIN_SCALE)
 const CAMERA_TWEEN_FOCUS_ZOOM_DEFAULT := Vector2.ONE
+const DEFEND_TIMEOUT: float = 1.0
 
 #############
 ## VARIABLES
@@ -117,14 +118,18 @@ func _on_ally_turn_started() -> void:
 		battle_camera.focus_target(enemy_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
 		player_battle_unit.melee_attack(enemy_battle_unit, selected_resource)
 
+	elif selected_resource.name == "Defend":
+		async_turn_pool.add(self)
+		player_battle_unit.defend = true
+		timer.start(DEFEND_TIMEOUT)
+		await timer.timeout
+		async_turn_pool.remove(self)
+
 	elif selected_resource is Item:
 		player_battle_unit.use_item(player_battle_unit, selected_resource)
 
-	elif selected_resource.name == "run":
+	elif selected_resource.name == "Run":
 		exit_battle()
-
-	elif selected_resource.name == "defend":
-		turn_manager.advance_turn()
 
 
 func _on_enemy_turn_started() -> void:

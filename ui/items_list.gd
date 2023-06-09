@@ -30,7 +30,7 @@ func update_item_button_text(button: ResourceButton) -> void:
 ## SIGNALS CALLBACKS
 #####################
 
-func _on_item_added(item_index: int, item: Item) -> void:
+func _on_item_added(_item_index: int, item: Item) -> void:
 	var item_button: ResourceButton = add_resource_button()
 	item_button.resource = item
 	update_item_button_text(item_button)

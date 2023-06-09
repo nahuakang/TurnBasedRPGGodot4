@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_7fh6t")
-name = "run"
+name = "Run"
 description = "Run away"
