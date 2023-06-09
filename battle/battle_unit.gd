@@ -84,6 +84,20 @@ func melee_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void
 	async_turn_pool.remove(self)
 
 
+func use_item(target: BattleUnit, item: Item) -> void:
+	async_turn_pool.add(self)
+	battle_animations.play("item_anticipation")
+	await battle_animations.animation_finished
+
+	stats.health += item.heal_amount
+
+	battle_animations.play("item_release")
+	await battle_animations.animation_finished
+
+	battle_animations.play("idle")
+	async_turn_pool.remove(self)
+
+
 func deal_damage(target: BattleUnit, battle_action: DamageBattleAction) -> void:
 	var damage = (
 		(

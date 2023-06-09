@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cjitjo12n3723"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cjitjo12n3723"]
 
-[ext_resource type="Script" path="res://items/item.gd" id="1_ibjc4"]
+[ext_resource type="Script" path="res://items/healing_item.gd" id="1_ig6xv"]
 [ext_resource type="Texture2D" uid="uid://cecnkveil8s6t" path="res://assets/sprites/Apple.png" id="1_j3dok"]
 
 [resource]
-script = ExtResource("1_ibjc4")
+script = ExtResource("1_ig6xv")
+heal_amount = 2
 name = "Apple"
 description = "A small fruit that heals 2 health."
 amount = 1
