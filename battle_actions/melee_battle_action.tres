@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="DamageBattleAction" load_steps=2 format=3 uid="uid://ce7spjt6e3q4d"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ce7spjt6e3q4d"]
 
-[ext_resource type="Script" path="res://battle_actions/damage_battle_action.gd" id="1_7fmw7"]
+[ext_resource type="Script" path="res://battle_actions/melee_battle_action.gd" id="1_ggwdp"]
 
 [resource]
-script = ExtResource("1_7fmw7")
-type = 0
+script = ExtResource("1_ggwdp")
 damage = 5
 name = "Melee"
 description = "Basic melee action"

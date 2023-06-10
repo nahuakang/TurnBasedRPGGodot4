@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RangedBattleAction" load_steps=3 format=3 uid="uid://bkcnob8goqx4q"]
+
+[ext_resource type="PackedScene" uid="uid://drjn67brto1nm" path="res://projectiles/fireball.tscn" id="1_4xel8"]
+[ext_resource type="Script" path="res://battle_actions/ranged_battle_action.gd" id="1_qrsj2"]
+
+[resource]
+script = ExtResource("1_qrsj2")
+projectile = ExtResource("1_4xel8")
+damage = 7
+name = "Fireball"
+description = "A fireball attack"

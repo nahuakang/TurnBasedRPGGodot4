@@ -14,7 +14,6 @@ const APPROACH_OFFSET: int = 48          # Offset to not cover the attackee
 const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
 const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
-const PROJECTILE: PackedScene = preload("res://projectiles/fireball.tscn")
 
 #############
 ## VARIABLES
@@ -62,7 +61,7 @@ func set_defend(value: bool) -> void:
 ## METHODS
 ###########
 
-func melee_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void:
+func melee_attack(target: BattleUnit, battle_action: MeleeBattleAction) -> void:
 	async_turn_pool.add(self)
 
 	# Set Z index to make attacker render on top
@@ -100,12 +99,12 @@ func melee_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void
 	async_turn_pool.remove(self)
 
 
-func ranged_attack(target: BattleUnit, battle_action: DamageBattleAction) -> void:
+func ranged_attack(target: BattleUnit, battle_action: RangedBattleAction) -> void:
 	async_turn_pool.add(self)
 	battle_animations.play("ranged_anticipation")
 	await battle_animations.animation_finished
 
-	var projectile: Projectile = PROJECTILE.instantiate()
+	var projectile: Projectile = battle_action.projectile.instantiate()
 	# Add to the `BattleUnit` scene instead of current scene so we can await signal properly
 	add_child(projectile)
 	projectile.global_position = battle_animations.get_emission_position()

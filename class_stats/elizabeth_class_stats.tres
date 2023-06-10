@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://ce7spjt6e3q4d" path="res://battle_actions/melee_battle_action.tres" id="1_l46et"]
 [ext_resource type="Script" path="res://class_stats/player_class_stats.gd" id="2_iwynn"]
 [ext_resource type="Resource" uid="uid://85f8208bh0bm" path="res://battle_actions/defend_battle_action.tres" id="2_ykaor"]
-[ext_resource type="Resource" uid="uid://bkcnob8goqx4q" path="res://battle_actions/ranged_battle_action.tres" id="3_lfrhw"]
+[ext_resource type="Resource" uid="uid://bkcnob8goqx4q" path="res://battle_actions/fireball_battle_action.tres" id="3_lfrhw"]
 [ext_resource type="Resource" uid="uid://vhmm0oy0k2sm" path="res://items/inventory.tres" id="4_dranp"]
 
 [resource]
