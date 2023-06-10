@@ -82,8 +82,10 @@ func _on_items_list_resource_selected(resource: Item) -> void:
 func _on_context_menu_option_selected(option: ContextMenu.CONTEXT_OPTION) -> void:
 	match option:
 		ContextMenu.CONTEXT_OPTION.USE:
-			ui_stack.clear()
-			battle_menu.show()
+			# Need to pop the use/info menu and the action/item menu
+			ui_stack.pop()
+			ui_stack.pop()
+			battle_menu.release_focus()
 			battle_menu.hide_menu()
 
 			if selected_resource is Item:
