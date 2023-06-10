@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbhti0j4w38vv"]
+
+[ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_vqqvv"]
+[ext_resource type="Script" path="res://ui/overworld_menu.gd" id="2_oiavd"]
+[ext_resource type="PackedScene" uid="uid://cju7ll34rpnfu" path="res://ui/parent_button.tscn" id="3_li8a2"]
+
+[node name="OverworldMenu" type="PanelContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(48, 0)
+offset_right = 48.0
+offset_bottom = 14.0
+theme = ExtResource("1_vqqvv")
+script = ExtResource("2_oiavd")
+focus_nodes = Array[NodePath]([NodePath("MarginContainer/VBoxContainer/StatsButton"), NodePath("MarginContainer/VBoxContainer/ItemsButton"), NodePath("MarginContainer/VBoxContainer/ExitButton")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="StatsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
+layout_mode = 2
+text = "Stats"
+
+[node name="ItemsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
+layout_mode = 2
+text = "Items"
+
+[node name="ExitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/StatsButton" to="." method="_on_stats_button_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/ItemsButton" to="." method="_on_items_button_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_button_down"]
