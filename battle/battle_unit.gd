@@ -11,9 +11,10 @@ class_name BattleUnit
 #############
 
 const APPROACH_OFFSET: int = 48          # Offset to not cover the attackee
-const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
+const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
+const PROJECTILE: PackedScene = preload("res://projectiles/projectile.tscn")
 
 #############
 ## VARIABLES
@@ -106,6 +107,11 @@ func ranged_attack(target: BattleUnit, battle_action: DamageBattleAction) -> voi
 
 	deal_damage(target, battle_action)
 	target.take_hit(self)
+
+	var projectile: Projectile = PROJECTILE.instantiate()
+	get_tree().current_scene.add_child(projectile)
+	projectile.global_position = battle_animations.get_emission_position()
+	projectile.move_to(target)
 
 	battle_animations.play("ranged_release")
 	await battle_animations.animation_finished

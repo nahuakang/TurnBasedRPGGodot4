@@ -175,3 +175,5 @@ speed_scale = 1.2
 libraries = {
 "": SubResource("AnimationLibrary_sbtr5")
 }
+
+[node name="EmissionPoint" type="Marker2D" parent="."]

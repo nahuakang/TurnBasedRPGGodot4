@@ -273,3 +273,6 @@ modulate = Color(0, 0, 0, 1)
 show_behind_parent = true
 position = Vector2(-25, 51)
 texture = ExtResource("3_pmodu")
+
+[node name="EmissionPoint" type="Marker2D" parent="."]
+position = Vector2(12, 17)
