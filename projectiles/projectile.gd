@@ -5,7 +5,7 @@ class_name Projectile
 ## CONSTANTS
 #############
 
-const PROJECTILE_DURATION: float = 0.4
+const PROJECTILE_DURATION: float = 0.5
 
 #############
 ## VARIABLES
@@ -14,17 +14,39 @@ const PROJECTILE_DURATION: float = 0.4
 var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 
 ###########
+## SIGNALS
+###########
+
+signal contact
+
+#############
+## OVERRIDES
+#############
+
+# To be overriden by inherited scenes
+func _animate_collision() -> void:
+	await get_tree().process_frame
+	pass
+
+
+###########
 ## METHODS
 ###########
 
-func move_to(target: BattleUnit) -> void:
+func move_to(target: BattleUnit, trans: int = Tween.TRANS_LINEAR, easing: int = Tween.EASE_IN) -> void:
+	z_index = 25
+
 	async_turn_pool.add(self)
 
-	var tween := create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
+	var tween := create_tween().set_trans(trans).set_ease(easing)
 	# Keep the player's y-position
 	var target_position := Vector2(target.global_position.x, global_position.y)
 	tween.tween_property(self, "global_position", target_position, PROJECTILE_DURATION).from_current()
 	await tween.finished
+
+	contact.emit()
+
+	await _animate_collision()
 
 	async_turn_pool.remove(self)
 	queue_free()

@@ -1,22 +1,22 @@
 [gd_scene load_steps=8 format=3 uid="uid://drjn67brto1nm"]
 
-[ext_resource type="Script" path="res://projectiles/projectile.gd" id="1_dlqcb"]
-[ext_resource type="Texture2D" uid="uid://c4v3j3nf20elr" path="res://assets/sprites/Fireball.png" id="2_86c81"]
+[ext_resource type="Script" path="res://projectiles/projectile.gd" id="1_vpmyk"]
+[ext_resource type="Texture2D" uid="uid://c4v3j3nf20elr" path="res://assets/sprites/Fireball.png" id="2_yjoym"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iw4u"]
-atlas = ExtResource("2_86c81")
+atlas = ExtResource("2_yjoym")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_63d70"]
-atlas = ExtResource("2_86c81")
+atlas = ExtResource("2_yjoym")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58u1p"]
-atlas = ExtResource("2_86c81")
+atlas = ExtResource("2_yjoym")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64i7a"]
-atlas = ExtResource("2_86c81")
+atlas = ExtResource("2_yjoym")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nbnmk"]
@@ -39,12 +39,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Projectile" type="Node2D"]
-script = ExtResource("1_dlqcb")
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_vpmyk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-10, 2)
 sprite_frames = SubResource("SpriteFrames_nbnmk")
 animation = &"effect"
 autoplay = "effect"
-frame_progress = 0.834869
+frame_progress = 0.639705
