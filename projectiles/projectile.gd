@@ -5,7 +5,7 @@ class_name Projectile
 ## CONSTANTS
 #############
 
-const PROJECTILE_DURATION: float = 0.5
+const PROJECTILE_DURATION: float = 0.6
 
 #############
 ## VARIABLES
@@ -18,6 +18,7 @@ var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 ###########
 
 signal contact
+signal collision_animation_finished
 
 #############
 ## OVERRIDES
@@ -26,7 +27,6 @@ signal contact
 # To be overriden by inherited scenes
 func _animate_collision() -> void:
 	await get_tree().process_frame
-	pass
 
 
 ###########
@@ -46,7 +46,8 @@ func move_to(target: BattleUnit, trans: int = Tween.TRANS_LINEAR, easing: int = 
 
 	contact.emit()
 
-	await _animate_collision()
+	_animate_collision()
+	await collision_animation_finished
 
 	async_turn_pool.remove(self)
 	queue_free()
