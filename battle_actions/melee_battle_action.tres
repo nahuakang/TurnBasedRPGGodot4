@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ce7spjt6e3q4d"]
+[gd_resource type="Resource" script_class="MeleeBattleAction" load_steps=2 format=3 uid="uid://ce7spjt6e3q4d"]
 
 [ext_resource type="Script" path="res://battle_actions/melee_battle_action.gd" id="1_ggwdp"]
 

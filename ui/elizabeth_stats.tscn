@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpoviesjcyd33"]
+
+[ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_sjluw"]
+[ext_resource type="PackedScene" uid="uid://wtjgk8o0vvan" path="res://ui/value_bar.tscn" id="2_hmrsb"]
+[ext_resource type="Script" path="res://ui/elizabeth_stats.gd" id="2_mmo8q"]
+[ext_resource type="Texture2D" uid="uid://xn0irisqwh2t" path="res://assets/sprites/ExperienceBar.png" id="3_i5eq2"]
+
+[node name="ElizabethStats" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_sjluw")
+script = ExtResource("2_mmo8q")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name: Elizabeth"
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level: 1"
+
+[node name="Health" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Health"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health: "
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/Health" instance=ExtResource("2_hmrsb")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Experience" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Experience"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Experience: "
+
+[node name="ExperienceBar" parent="MarginContainer/VBoxContainer/Experience" instance=ExtResource("2_hmrsb")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DecreaseProgressBar" parent="MarginContainer/VBoxContainer/Experience/ExperienceBar" index="0"]
+visible = false
+
+[node name="IncreaseProgressBar" parent="MarginContainer/VBoxContainer/Experience/ExperienceBar" index="1"]
+visible = false
+layout_mode = 0
+
+[node name="ActualProgressBar" parent="MarginContainer/VBoxContainer/Experience/ExperienceBar" index="2"]
+layout_mode = 0
+texture_progress = ExtResource("3_i5eq2")
+
+[editable path="MarginContainer/VBoxContainer/Experience/ExperienceBar"]
