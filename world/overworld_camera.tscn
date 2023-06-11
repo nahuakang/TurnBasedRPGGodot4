@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g4x553v1lrdu"]
+
+[ext_resource type="Script" path="res://world/overworld_camera.gd" id="1_k7mos"]
+
+[node name="OverworldCamera" type="Camera2D"]
+script = ExtResource("1_k7mos")

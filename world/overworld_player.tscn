@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://7ekxn24buju2"]
+[gd_scene load_steps=27 format=3 uid="uid://7ekxn24buju2"]
 
 [ext_resource type="Script" path="res://world/overworld_player.gd" id="1_fhgci"]
 [ext_resource type="Texture2D" uid="uid://cxmbircyqf8wk" path="res://assets/sprites/ElizabethWalk.png" id="2_st8mt"]
+[ext_resource type="PackedScene" uid="uid://g4x553v1lrdu" path="res://world/overworld_camera.tscn" id="3_qfd3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah4dt"]
 atlas = ExtResource("2_st8mt")
@@ -205,7 +206,7 @@ frame_progress = 0.84403
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kclkv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="OverworldCamera" parent="." instance=ExtResource("3_qfd3p")]
 
 [node name="InteractableDetector" type="Area2D" parent="."]
 collision_layer = 0

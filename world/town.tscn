@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1g63qdlq0ae5"]
+[gd_scene load_steps=12 format=3 uid="uid://c1g63qdlq0ae5"]
 
 [ext_resource type="PackedScene" uid="uid://7ekxn24buju2" path="res://world/overworld_player.tscn" id="1_5babj"]
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="2_adq74"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://e1m7bydxhl" path="res://world/stumpy_npc.tscn" id="8_kgyrl"]
 [ext_resource type="PackedScene" uid="uid://burq6rw67li2s" path="res://world/random_encounters.tscn" id="9_dlwal"]
 [ext_resource type="Resource" uid="uid://dulhmh0tatbv0" path="res://class_stats/werewolf_class_stats.tres" id="10_bapoi"]
+[ext_resource type="PackedScene" uid="uid://bkdk3q8kt7vyq" path="res://world/camera_limits.tscn" id="11_bedd1"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -44,3 +45,9 @@ position = Vector2(216, 32)
 [node name="RandomEncounters" parent="." instance=ExtResource("9_dlwal")]
 position = Vector2(224, 128)
 encounters = Array[Resource("res://class_stats/class_stats.gd")]([ExtResource("10_bapoi")])
+
+[node name="CameraLimits" parent="." instance=ExtResource("11_bedd1")]
+offset_left = -24.0
+offset_top = -40.0
+offset_right = 360.0
+offset_bottom = 208.0
