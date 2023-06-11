@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp44xsog5ufer"]
+[gd_scene load_steps=3 format=3 uid="uid://bp44xsog5ufer"]
 
 [ext_resource type="PackedScene" uid="uid://bu5vd5ru12fx1" path="res://ui/message_display.tscn" id="1_udawk"]
+[ext_resource type="Texture2D" uid="uid://c1717evxuekdo" path="res://assets/sprites/Vignette.png" id="2_64uy1"]
 
 [node name="GlobalUI" type="CanvasLayer"]
 layer = 128
 
 [node name="MessageDisplay" parent="." instance=ExtResource("1_udawk")]
 visible = false
+
+[node name="Vignette" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_64uy1")
