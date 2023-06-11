@@ -20,6 +20,7 @@ SceneStack="*res://scripts/scene_stack.gd"
 ReferenceStash="*res://scripts/reference_stash.gd"
 Events="*res://scripts/events.gd"
 GlobalUI="*res://ui/global_ui.tscn"
+LevelSwapper="*res://scripts/level_swapper.gd"
 
 [display]
 
