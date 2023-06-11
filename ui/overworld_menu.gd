@@ -17,15 +17,6 @@ enum OverworldMenuOption {
 
 signal option_selected(option: OverworldMenuOption)
 
-#############
-## OVERRIDES
-#############
-
-func _ready() -> void:
-	get_tree().paused = true
-	grab_menu_focus()
-
-
 #####################
 ## SIGNALS CALLBACKS
 #####################

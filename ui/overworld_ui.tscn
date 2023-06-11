@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmlij6kt474sr"]
 
 [ext_resource type="PackedScene" uid="uid://bpkose037kk0o" path="res://ui/dialog_ui.tscn" id="1_dfynj"]
-[ext_resource type="PackedScene" uid="uid://cbhti0j4w38vv" path="res://ui/overworld_menu.tscn" id="2_ly5m1"]
+[ext_resource type="PackedScene" uid="uid://b1hip3btpmytq" path="res://ui/overworld_menu_manager.tscn" id="2_vxl7j"]
 
 [node name="OverworldUI" type="CanvasLayer"]
 layer = 10
@@ -9,4 +9,4 @@ layer = 10
 [node name="DialogUI" parent="." instance=ExtResource("1_dfynj")]
 visible = false
 
-[node name="OverworldMenu" parent="." instance=ExtResource("2_ly5m1")]
+[node name="OverworldMenuManager" parent="." instance=ExtResource("2_vxl7j")]

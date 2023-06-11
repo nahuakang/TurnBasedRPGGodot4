@@ -42,6 +42,11 @@ func set_bar(value: float, max_value: float) -> void:
 ## `max_value` is the maximum value that should not be exceeded.
 ## `duration` is the animation duration in seconds, default to 1.0.
 func animate_bar(value: float, max_value: float, duration: float = 1.0) -> void:
+	# A signal might be sent to trigger `animate_bar` when the ValueBar is not in
+	# the current scene tree. If so, return immediately to avoid crashing
+	if not is_inside_tree():
+		return
+
 	var previous_bar_value := bar_value
 	bar_value = calculate_bar_value(value, max_value)
 

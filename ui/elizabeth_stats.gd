@@ -21,8 +21,16 @@ signal animation_finished
 #############
 
 func _ready() -> void:
-	stats.health_changed.connect(_on_health_changed)
+	if not stats.health_changed.is_connected(_on_health_changed):
+		stats.health_changed.connect(_on_health_changed)
+
 	update_stats()
+
+
+func _exit_tree() -> void:
+	# Ensure that the next time `elizabeth_stats` enters the scene tree,
+	# we re-run `_ready` to update the stats
+	request_ready()
 
 
 ###########

@@ -10,7 +10,7 @@ class_name UIStack
 ## VARIABLES
 #############
 
-var uis: Array[FocusMenu] = []
+var uis: Array[Control] = []
 
 ###########
 ## SIGNALS
@@ -19,32 +19,47 @@ var uis: Array[FocusMenu] = []
 signal ui_popped(ui)
 signal ui_stack_empty
 
-
 ###########
 ## METHODS
 ###########
 
-func push(ui_to_push: FocusMenu) -> void:
+func push(ui_to_push: Control) -> void:
 	if not empty():
-		# Release focus on the current top UI
-		uis.back().release_menu_focus()
+		if uis.back() is FocusMenu:
+			# Release focus on the current top UI
+			uis.back().release_menu_focus()
+		elif uis.back() is Control:
+			uis.back().release_focus()
 
 	uis.append(ui_to_push)
 	ui_to_push.show() # Must show UI first or `grab_focus` won't work
-	ui_to_push.grab_menu_focus()
+
+	if ui_to_push is FocusMenu:
+		ui_to_push.grab_menu_focus()
+	elif ui_to_push is Control:
+		ui_to_push.grab_focus()
 
 
-func pop() -> FocusMenu:
+func pop() -> Control:
 	if empty():
 		return null
 
-	var ui_to_pop: FocusMenu = uis.pop_back()
-	ui_to_pop.release_menu_focus() # Must release focus before hiding UI
+	var ui_to_pop = uis.pop_back()
+
+	if ui_to_pop is FocusMenu:
+		ui_to_pop.release_menu_focus() # Must release focus before hiding UI
+	elif ui_to_pop is Control:
+		ui_to_pop.release_focus()
+
 	ui_to_pop.hide()
 
 	if not empty():
 		uis.back().show()
-		uis.back().grab_menu_focus()
+
+		if uis.back() is FocusMenu:
+			uis.back().grab_menu_focus()
+		elif uis.back() is Control:
+			uis.back().grab_focus()
 
 	ui_popped.emit(ui_to_pop)
 

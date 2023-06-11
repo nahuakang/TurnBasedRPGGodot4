@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1hip3btpmytq"]
+
+[ext_resource type="PackedScene" uid="uid://cbhti0j4w38vv" path="res://ui/overworld_menu.tscn" id="1_a44tf"]
+[ext_resource type="Script" path="res://ui/overworld_menu_manager.gd" id="1_o16tp"]
+[ext_resource type="PackedScene" uid="uid://bpoviesjcyd33" path="res://ui/elizabeth_stats.tscn" id="2_xnd2b"]
+[ext_resource type="PackedScene" uid="uid://nxchr562c1cd" path="res://ui/items_list.tscn" id="3_j6r88"]
+[ext_resource type="PackedScene" uid="uid://ctvy63bh3b158" path="res://ui/context_menu.tscn" id="4_eq13h"]
+[ext_resource type="PackedScene" uid="uid://bmr78rrctc33e" path="res://ui/info_menu.tscn" id="5_jayt7"]
+
+[node name="OverworldMenuManager" type="MarginContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_o16tp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="OverworldMenu" parent="HBoxContainer" instance=ExtResource("1_a44tf")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="ElizabethStats" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_xnd2b")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ItemsList" parent="HBoxContainer/VBoxContainer" instance=ExtResource("3_j6r88")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ContextMenu" parent="HBoxContainer" instance=ExtResource("4_eq13h")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="InfoMenu" parent="HBoxContainer" instance=ExtResource("5_jayt7")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="option_selected" from="HBoxContainer/OverworldMenu" to="." method="_on_overworld_menu_option_selected"]
+[connection signal="resource_selected" from="HBoxContainer/VBoxContainer/ItemsList" to="." method="_on_items_list_resource_selected"]
+[connection signal="option_selected" from="HBoxContainer/ContextMenu" to="." method="_on_context_menu_option_selected"]

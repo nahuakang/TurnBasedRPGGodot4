@@ -45,6 +45,10 @@ func _unhandled_input(event: InputEvent):
 			interactable._run_interaction()
 			get_viewport().set_input_as_handled()
 
+	if event.is_action_pressed("ui_cancel"):
+		Events.request_show_overworld_menu.emit()
+		get_viewport().set_input_as_handled()
+
 
 ###########
 ## METHODS

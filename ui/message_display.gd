@@ -17,7 +17,7 @@ func _ready() -> void:
 	Events.request_show_message.connect(show_message)
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not visible: return
 
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
