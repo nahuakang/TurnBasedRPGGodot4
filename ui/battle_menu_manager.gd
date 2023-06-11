@@ -20,7 +20,6 @@ const RUN_BATTLE_ACTION = preload("res://battle_actions/run_battle_action.tres")
 var elizabeth_stats: PlayerClassStats = ReferenceStash.elizabeth_stats
 var inventory: Inventory = ReferenceStash.inventory
 var ui_stack := UIStack.new()
-
 var selected_resource: Resource
 
 ###########

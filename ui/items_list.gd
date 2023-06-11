@@ -22,8 +22,16 @@ func _ready():
 ## METHODS
 ###########
 
+func fill(resource_list: Array[Resource]) -> void:
+	super.fill(resource_list)
+
+	for button in button_container.get_children():
+		update_item_button_text(button)
+
+
 func update_item_button_text(button: ResourceButton) -> void:
-	button.text = button.resource.name
+	var item_resource: Item = button.resource
+	button.text = item_resource.name + " x" + str(item_resource.amount)
 
 
 #####################
