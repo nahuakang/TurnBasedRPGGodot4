@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://csgvm3hlhqolt"]
+
+[ext_resource type="Texture2D" uid="uid://cmng32inoof7f" path="res://assets/sprites/Forge.png" id="1_pwp65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_278ti"]
+size = Vector2(32, 20)
+
+[node name="Forge" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+texture = ExtResource("1_pwp65")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 6)
+shape = SubResource("RectangleShape2D_278ti")

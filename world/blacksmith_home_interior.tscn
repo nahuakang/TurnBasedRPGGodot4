@@ -1,14 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpyq6wob8hjvr"]
+[gd_scene load_steps=10 format=3 uid="uid://bpyq6wob8hjvr"]
 
 [ext_resource type="PackedScene" uid="uid://cixe5nhwfwmog" path="res://world/door.tscn" id="1_ucdb1"]
+[ext_resource type="PackedScene" uid="uid://bkdk3q8kt7vyq" path="res://world/camera_limits.tscn" id="1_ulcc5"]
+[ext_resource type="PackedScene" uid="uid://d07grxthvtxpd" path="res://world/house_interior_tiles.tscn" id="2_jli8g"]
+[ext_resource type="PackedScene" uid="uid://3lj6677x6swj" path="res://world/barrel.tscn" id="4_uujfa"]
+[ext_resource type="Texture2D" uid="uid://d1x6t5nvsab4m" path="res://assets/sprites/Rug.png" id="5_12w6g"]
+[ext_resource type="PackedScene" uid="uid://nuxrd6bww6aa" path="res://world/bed.tscn" id="6_ixo6v"]
+[ext_resource type="PackedScene" uid="uid://csgvm3hlhqolt" path="res://world/forge.tscn" id="7_fub53"]
+[ext_resource type="Texture2D" uid="uid://s24b4heihhl6" path="res://assets/sprites/WeaponWall.png" id="8_sc3j0"]
+[ext_resource type="PackedScene" uid="uid://btvwa7hmjon5e" path="res://world/anvil.tscn" id="9_n68ob"]
 
 [node name="BlacksmithHomeInterior" type="Node2D"]
+y_sort_enabled = true
+
+[node name="CameraLimits" parent="." instance=ExtResource("1_ulcc5")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 240.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Door" parent="." instance=ExtResource("1_ucdb1")]
+position = Vector2(24, 136)
 new_area = "res://world/town.tscn"
 connection = 1
 
 [node name="DropPoint" parent="Door" index="1"]
 position = Vector2(0, -16)
+
+[node name="HouseInteriorTiles" parent="." instance=ExtResource("2_jli8g")]
+layer_0/tile_data = PackedInt32Array(-1, 5, 0, -65536, 65541, 0, -65535, 65541, 0, -65534, 65541, 0, -65533, 65541, 0, -65532, 65541, 0, -65531, 65541, 0, -65530, 65536, 0, -65529, 65536, 0, -65528, 65536, 0, -65527, 65536, 0, -65526, 131072, 0, 10, 131072, 1, 65546, 131072, 1, 131082, 131072, 1, 196618, 131072, 1, 262154, 131072, 1, 327690, 131072, 1, 393226, 131072, 1, 458762, 131072, 2, 458761, 65536, 2, 458760, 65536, 2, 458759, 65536, 2, 458758, 65536, 2, 458757, 65536, 2, 458756, 65536, 2, 458755, 65536, 2, 524287, 0, 2, 458754, 196608, 2, 458752, 196608, 3, 458751, 0, 1, 393215, 0, 1, 327679, 5, 1, 262143, 5, 1, 196607, 5, 1, 131071, 5, 1, 65535, 5, 1, 0, 65536, 1, 1, 65536, 3, 2, 65536, 3, 3, 65536, 1, 4, 65541, 1, 5, 65541, 1, 6, 65536, 1, 7, 65536, 3, 8, 65536, 3, 9, 65536, 1, 65536, 65536, 1, 65537, 65536, 3, 65538, 65536, 3, 65539, 65536, 3, 65540, 65541, 1, 65541, 65541, 1, 65542, 65536, 3, 65543, 65536, 3, 65544, 65536, 3, 65545, 131072, 3, 131072, 3, 0, 131073, 131075, 0, 131074, 65539, 0, 131075, 65539, 0, 131076, 3, 0, 131077, 65539, 0, 131078, 196611, 0, 131079, 2, 0, 131080, 2, 0, 131081, 2, 0, 196617, 2, 0, 196616, 2, 0, 196615, 2, 0, 196614, 2, 0, 196613, 131075, 0, 196612, 3, 0, 196611, 131075, 0, 196610, 131075, 0, 196609, 65539, 0, 196608, 3, 0, 262144, 65539, 0, 262145, 131075, 0, 262146, 65539, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 327689, 2, 0, 327688, 2, 0, 327687, 2, 0, 327686, 2, 0, 327685, 2, 0, 327684, 2, 0, 327683, 2, 0, 327682, 2, 0, 327681, 2, 0, 327680, 2, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 393223, 2, 0, 393224, 2, 0, 393225, 2, 0, 458753, 2, 0, 262147, 2, 0, 262148, 2, 0)
+
+[node name="HouseInteriorTilesTop" parent="." instance=ExtResource("2_jli8g")]
+layer_0/tile_data = PackedInt32Array(393222, 65540, 0, 393223, 131076, 0, 131078, 131076, 2, 131079, 65540, 1, 131080, 131076, 1, 262149, 65540, 2, 262150, 131076, 2, 393224, 65540, 2, 393225, 131076, 2, 131077, 65540, 2, 327683, 65540, 2, 327684, 131076, 2, 393217, 4, 1, 393218, 131076, 1, 393219, 4, 1, 393220, 65540, 1, 393221, 131076, 1, 262152, 65540, 2, 262153, 131076, 2, 327687, 4, 1, 327688, 65540, 1, 327689, 131076, 1)
+
+[node name="Barrel" parent="." instance=ExtResource("4_uujfa")]
+position = Vector2(128, 104)
+
+[node name="Barrel2" parent="." instance=ExtResource("4_uujfa")]
+position = Vector2(144, 104)
+
+[node name="Rug" type="Sprite2D" parent="."]
+position = Vector2(104, 88)
+texture = ExtResource("5_12w6g")
+
+[node name="Bed" parent="." instance=ExtResource("6_ixo6v")]
+position = Vector2(144, 48)
+
+[node name="Forge" parent="." instance=ExtResource("7_fub53")]
+position = Vector2(64, 32)
+
+[node name="WeaponWall" type="Sprite2D" parent="."]
+position = Vector2(32, 16)
+texture = ExtResource("8_sc3j0")
+
+[node name="Anvil" parent="." instance=ExtResource("9_n68ob")]
+position = Vector2(24, 56)
 
 [editable path="Door"]

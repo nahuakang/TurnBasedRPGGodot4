@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://nuxrd6bww6aa"]
+
+[ext_resource type="Texture2D" uid="uid://bwtcxqg3hjtb" path="res://assets/sprites/BacksmithBed.png" id="1_hf7u1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xqh"]
+size = Vector2(32, 32)
+
+[node name="Bed" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(16, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hf7u1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_g1xqh")

@@ -4,13 +4,16 @@
 [ext_resource type="Script" path="res://world/barrel.gd" id="1_y7fd6"]
 
 [node name="Barrel" type="StaticBody2D"]
+y_sort_enabled = true
 collision_layer = 9
 collision_mask = 0
 script = ExtResource("1_y7fd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
+y_sort_enabled = true
+position = Vector2(8, -4)
 texture = ExtResource("1_i3ebk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(8, -2)
 polygon = PackedVector2Array(-6, 4, -6, -4, -4, -6, 4, -6, 6, -4, 6, 4, 4, 6, -4, 6)
