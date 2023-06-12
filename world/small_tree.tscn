@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwvsd0bipwugu"]
+
+[ext_resource type="Texture2D" uid="uid://mia4mny23lvi" path="res://assets/sprites/SmallTree.png" id="1_vq35h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4o5s8"]
+radius = 8.0
+
+[node name="SmallTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -32)
+texture = ExtResource("1_vq35h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4o5s8")

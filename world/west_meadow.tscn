@@ -1,15 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwbogyccc7mx6"]
+[gd_scene load_steps=12 format=3 uid="uid://cwbogyccc7mx6"]
 
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="1_l1e8e"]
 [ext_resource type="PackedScene" uid="uid://diy02kycrubr2" path="res://world/dirt_tiles.tscn" id="2_kqjnp"]
 [ext_resource type="PackedScene" uid="uid://bkdk3q8kt7vyq" path="res://world/camera_limits.tscn" id="3_pnlt0"]
 [ext_resource type="PackedScene" uid="uid://c6vriuq0jre0g" path="res://world/wall_tiles.tscn" id="4_5wyqw"]
+[ext_resource type="PackedScene" uid="uid://cjjuqtxw0w5xy" path="res://world/water_tiles.tscn" id="5_2jgga"]
 [ext_resource type="PackedScene" uid="uid://cixe5nhwfwmog" path="res://world/door.tscn" id="5_gtqb2"]
+[ext_resource type="PackedScene" uid="uid://gpoytvpmualg" path="res://world/detail_tiles.tscn" id="6_uk8sm"]
+[ext_resource type="PackedScene" uid="uid://bovsbtt87hghk" path="res://world/grass_tiles.tscn" id="7_6vwtt"]
+[ext_resource type="PackedScene" uid="uid://bryahd1xrfcg6" path="res://world/tree.tscn" id="9_yv6da"]
+[ext_resource type="PackedScene" uid="uid://cwvsd0bipwugu" path="res://world/small_tree.tscn" id="10_fj5qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v713c"]
 size = Vector2(16, 16)
 
 [node name="WestMeadow" type="Node2D"]
+y_sort_enabled = true
 
 [node name="GrassBackground" parent="." instance=ExtResource("1_l1e8e")]
 
@@ -23,6 +29,15 @@ offset_bottom = 304.0
 [node name="WallTiles" parent="." instance=ExtResource("4_5wyqw")]
 layer_0/tile_data = PackedInt32Array(-65536, 65538, 3, -65535, 65538, 3, -65534, 65538, 3, -65533, 65538, 3, -65532, 65538, 3, -65531, 65538, 3, -65530, 65538, 3, -65529, 65538, 3, -65528, 65538, 3, -65527, 65538, 3, -65526, 65538, 3, -65525, 65538, 3, -65524, 65538, 3, -65523, 65538, 3, -65522, 65538, 3, -65521, 65538, 3, -65520, 65538, 3, -65519, 65538, 3, -65518, 65538, 3, -65517, 65538, 3, -65516, 65538, 3, -65515, 65538, 3, 1245184, 65538, 3, 1245185, 65538, 3, 1245186, 65538, 3, 1245187, 65538, 3, 1245188, 65538, 3, 1245189, 65538, 3, 1245190, 65538, 3, 1245191, 65538, 3, 1245192, 65538, 3, 1245193, 65538, 3, 1245194, 65538, 3, 1245195, 65538, 3, 1245196, 65538, 3, 1245197, 65538, 3, 1245198, 65538, 3, 1245199, 65538, 3, 1245200, 65538, 3, 1245201, 65538, 3, 1245202, 65538, 3, 1245203, 65538, 3, 1245204, 65538, 3, 1245205, 65538, 3, 1310719, 65538, 3, 1245183, 65538, 3, 1179647, 65538, 3, 1114111, 65538, 3, 1048575, 65538, 3, 983039, 65538, 3, 917503, 65538, 3, 851967, 65538, 3, 786431, 65538, 3, 720895, 65538, 3, 524287, 65538, 3, 458751, 65538, 3, 393215, 65538, 3, 327679, 65538, 3, 262143, 65538, 3, 196607, 65538, 3, 131071, 65538, 3, 65535, 65538, 3, -1, 65538, 3, -65514, 65538, 3, 22, 65538, 3, 65558, 65538, 3, 131094, 65538, 3, 196630, 65538, 3, 262166, 65538, 3, 327702, 65538, 3, 393238, 65538, 3, 458774, 65538, 3, 655382, 65538, 3, 720918, 65538, 3, 786454, 65538, 3, 851990, 65538, 3, 1179670, 65538, 3, 1245206, 65538, 3, 1114134, 65538, 3, 1048598, 65538, 3, 983062, 65538, 3, 917526, 65538, 3)
 
+[node name="WaterTiles" parent="." instance=ExtResource("5_2jgga")]
+layer_0/tile_data = PackedInt32Array(983047, 65536, 0, 983046, 327680, 2, 917510, 131072, 0, 983045, 65536, 1, 917509, 65536, 0, 983044, 65536, 1, 917508, 65536, 0, 983043, 393216, 2, 917507, 0, 0, 983042, 65536, 0, 1048580, 65536, 2, 1048579, 65536, 2, 1048581, 65536, 2, 1048582, 65536, 2, 1048578, 65536, 2, 786451, 65536, 0, 1114130, 131072, 2, 1048594, 131072, 1, 983058, 131072, 1, 917522, 131072, 1, 851986, 327680, 1, 786450, 65536, 0, 1114129, 65536, 2, 1048593, 65536, 1, 983057, 65536, 1, 917521, 65536, 1, 851985, 65536, 1, 786449, 65536, 0, 1114128, 65536, 2, 1048592, 65536, 1, 983056, 393216, 2, 917520, 0, 1, 851984, 0, 1, 786448, 0, 0, 1114127, 0, 2, 1048591, 393216, 1, 983055, 65536, 0, 196617, 131072, 2, 131081, 131072, 1, 65545, 131072, 0, 196616, 65536, 2, 131080, 65536, 1, 65544, 65536, 0, 262151, 131072, 2, 196615, 327680, 1, 131079, 65536, 1, 65543, 65536, 0, 262150, 65536, 2, 196614, 65536, 1, 131078, 65536, 1, 65542, 65536, 0, 262149, 0, 2, 196613, 0, 1, 131077, 0, 1, 65541, 0, 0, 786452, 65536, 0, 786453, 131072, 0, 851988, 65536, 2, 851987, 65536, 2, 851989, 131072, 2, 983054, 65536, 0, 983053, 65536, 0, 983051, 65536, 0, 983049, 65536, 0, 983048, 65536, 0, 983050, 65536, 0, 983052, 65536, 0, 1048584, 65536, 2, 1048583, 65536, 2, 1048586, 65536, 2, 1048585, 65536, 2, 1048587, 65536, 2, 1048588, 65536, 2, 1048589, 65536, 2, 1048590, 65536, 2, 983041, 65536, 0, 983040, 0, 0, 1048577, 65536, 2, 1048576, 0, 2)
+
+[node name="DetailTiles" parent="." instance=ExtResource("6_uk8sm")]
+layer_0/tile_data = PackedInt32Array(524292, 0, 0, 655374, 0, 0, 524293, 65536, 0, 458767, 65536, 0, 655376, 65536, 1, 655362, 0, 1, 720900, 0, 1, 524306, 0, 1, 524297, 0, 1, 589836, 0, 1, 524308, 65536, 0, 524309, 1, 0, 589845, 1, 0, 524288, 65537, 1, 589824, 65537, 1, 1048581, 2, 0, 1048583, 2, 0, 1114128, 2, 0, 786449, 2, 0, 983044, 65538, 0, 131079, 2, 1, 131078, 2, 1, 196614, 2, 1, 65545, 65538, 0, 262149, 65538, 0, 196615, 2, 0, 131080, 2, 0, 851987, 2, 0, 983041, 2, 0, 917510, 65538, 0, 983058, 65538, 0, 1048594, 65538, 0, 1114130, 65538, 0, 1114129, 65538, 0, 786452, 65538, 1, 786451, 65538, 1, 917508, 65538, 1, 1048590, 2, 1, 1048591, 2, 1)
+
+[node name="GrassTiles" parent="." instance=ExtResource("7_6vwtt")]
+layer_0/tile_data = PackedInt32Array(655371, 0, 0, 655372, 65536, 0, 655375, 65536, 1, 262152, 0, 1, 327687, 0, 0, 262153, 65536, 1, 917511, 0, 0, 917512, 65536, 0, 851974, 0, 1, 1114119, 65536, 1, 1114121, 65536, 0, 917523, 0, 0, 983059, 0, 1)
+
 [node name="Door" parent="." instance=ExtResource("5_gtqb2")]
 position = Vector2(360, 144)
 new_area = "res://world/town.tscn"
@@ -32,6 +47,21 @@ shape = SubResource("RectangleShape2D_v713c")
 
 [node name="DropPoint" parent="Door" index="1"]
 position = Vector2(-18, 0)
+
+[node name="Tree" parent="." instance=ExtResource("9_yv6da")]
+position = Vector2(311, 104)
+
+[node name="SmallTree" parent="." instance=ExtResource("10_fj5qk")]
+position = Vector2(65, 55)
+
+[node name="Tree2" parent="." instance=ExtResource("9_yv6da")]
+position = Vector2(157, 227)
+
+[node name="SmallTree2" parent="." instance=ExtResource("10_fj5qk")]
+position = Vector2(327, 270)
+
+[node name="SmallTree3" parent="." instance=ExtResource("10_fj5qk")]
+position = Vector2(18, 219)
 
 [editable path="WallTiles"]
 [editable path="Door"]
