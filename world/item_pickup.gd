@@ -31,8 +31,11 @@ func _run_interaction() -> void:
 ## METHODS
 ###########
 
-func set_sprite_texture(item: Item) -> void:
-	sprite.texture = item.overworld_texture
+func set_sprite_texture(item_candidate: Item) -> void:
+	if not sprite:
+		return
+
+	sprite.texture = item_candidate.overworld_texture
 
 
 ###########

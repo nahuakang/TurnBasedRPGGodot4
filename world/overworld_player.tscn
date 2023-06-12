@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://7ekxn24buju2"]
+[gd_scene load_steps=28 format=3 uid="uid://7ekxn24buju2"]
 
 [ext_resource type="Script" path="res://world/overworld_player.gd" id="1_fhgci"]
 [ext_resource type="Texture2D" uid="uid://cxmbircyqf8wk" path="res://assets/sprites/ElizabethWalk.png" id="2_st8mt"]
@@ -193,6 +193,9 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_k13no"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fd8n"]
+size = Vector2(8, 8)
+
 [node name="OverworldPlayer" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fhgci")
@@ -215,3 +218,12 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetector"]
 position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_k13no")
+
+[node name="DoorDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
+shape = SubResource("RectangleShape2D_4fd8n")
+
+[connection signal="area_entered" from="DoorDetector" to="." method="_on_door_detector_area_entered"]

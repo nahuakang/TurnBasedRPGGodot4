@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name OverworldPlayer
 
 #############
 ## CONSTANTS
@@ -19,10 +20,17 @@ const ENCOUNTER_METER_REDUCTION_AMOUNT: float = 75.0
 
 var encounter_meter := MAX_ENCOUNTER_METER
 var encounter_chance := MIN_ENCOUNTER_CHANCE
+var last_door_connection: int = -1
 
 #############
 ## OVERRIDES
 #############
+
+func _init() -> void:
+	# Free the instance of the player in case one exists in the level swapper already
+	if LevelSwapper.player is OverworldPlayer:
+		queue_free()
+
 
 func _ready() -> void:
 	# Set the default InteractableDetector rotation to facing down
@@ -119,3 +127,24 @@ func animate_idle() -> void:
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
+
+
+func go_to_new_area(new_area_path: String) -> void:
+	encounter_meter = MAX_ENCOUNTER_METER
+	LevelSwapper.level_swap(self, new_area_path)
+
+
+#####################
+## SIGNALS CALLBACKS
+#####################
+
+func _on_door_detector_area_entered(door: Area2D) -> void:
+	if not door is Door:
+		return
+
+	door = door as Door
+	if door.new_area == null:
+		return
+
+	last_door_connection = door.connection
+	call_deferred("go_to_new_area", door.new_area)

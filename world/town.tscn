@@ -63,4 +63,7 @@ new_area = "res://world/west_meadow.tscn"
 [node name="CollisionShape2D" parent="Door" index="0"]
 position = Vector2(-88, 192)
 
+[node name="DropPoint" parent="Door" index="1"]
+position = Vector2(-72, 192)
+
 [editable path="Door"]
