@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwbogyccc7mx6"]
+[gd_scene load_steps=13 format=3 uid="uid://cwbogyccc7mx6"]
 
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="1_l1e8e"]
 [ext_resource type="PackedScene" uid="uid://diy02kycrubr2" path="res://world/dirt_tiles.tscn" id="2_kqjnp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bovsbtt87hghk" path="res://world/grass_tiles.tscn" id="7_6vwtt"]
 [ext_resource type="PackedScene" uid="uid://bryahd1xrfcg6" path="res://world/tree.tscn" id="9_yv6da"]
 [ext_resource type="PackedScene" uid="uid://cwvsd0bipwugu" path="res://world/small_tree.tscn" id="10_fj5qk"]
+[ext_resource type="PackedScene" uid="uid://dgs0jpmbqrf37" path="res://world/rock.tscn" id="11_xoan1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v713c"]
 size = Vector2(16, 16)
@@ -62,6 +63,12 @@ position = Vector2(327, 270)
 
 [node name="SmallTree3" parent="." instance=ExtResource("10_fj5qk")]
 position = Vector2(18, 219)
+
+[node name="Rock" parent="." instance=ExtResource("11_xoan1")]
+position = Vector2(232, 102)
+
+[node name="Rock2" parent="." instance=ExtResource("11_xoan1")]
+position = Vector2(81, 205)
 
 [editable path="WallTiles"]
 [editable path="Door"]
