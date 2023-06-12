@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://036a286ldxir"]
+
+[ext_resource type="Texture2D" uid="uid://dd6ef6anx3vws" path="res://assets/sprites/HouseBlacksmith.png" id="1_8ugm6"]
+[ext_resource type="PackedScene" uid="uid://cixe5nhwfwmog" path="res://world/door.tscn" id="2_rul4d"]
+
+[node name="BlacksmithHome" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, -8)
+texture = ExtResource("1_8ugm6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(0, 32, 0, 0, 64, 0, 64, 32, 32, 32, 32, 16, 16, 16, 16, 32)
+
+[node name="Door" parent="." instance=ExtResource("2_rul4d")]
+position = Vector2(24, 8)
+new_area = "res://world/blacksmith_home_interior.tscn"
+connection = 1
+
+[node name="DropPoint" parent="Door" index="1"]
+position = Vector2(0, 16)
+
+[editable path="Door"]

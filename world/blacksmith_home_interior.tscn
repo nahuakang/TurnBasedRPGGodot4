@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpyq6wob8hjvr"]
+
+[ext_resource type="PackedScene" uid="uid://cixe5nhwfwmog" path="res://world/door.tscn" id="1_ucdb1"]
+
+[node name="BlacksmithHomeInterior" type="Node2D"]
+
+[node name="Door" parent="." instance=ExtResource("1_ucdb1")]
+new_area = "res://world/town.tscn"
+connection = 1
+
+[node name="DropPoint" parent="Door" index="1"]
+position = Vector2(0, -16)
+
+[editable path="Door"]
