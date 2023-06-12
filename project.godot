@@ -21,6 +21,7 @@ ReferenceStash="*res://scripts/reference_stash.gd"
 Events="*res://scripts/events.gd"
 GlobalUI="*res://ui/global_ui.tscn"
 LevelSwapper="*res://scripts/level_swapper.gd"
+WorldStash="*res://scripts/world_stash.gd"
 
 [display]
 

@@ -5,6 +5,7 @@ extends Interactable
 #############
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var id := WorldStash.get_id(self)
 
 var inventory: Inventory = ReferenceStash.inventory
 
@@ -17,6 +18,10 @@ var inventory: Inventory = ReferenceStash.inventory
 #############
 ## OVERRIDES
 #############
+
+func _ready() -> void:
+	pass
+
 
 func _run_interaction() -> void:
 	inventory.add_item(item)
