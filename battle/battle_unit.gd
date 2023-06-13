@@ -109,10 +109,7 @@ func ranged_attack(target: BattleUnit, battle_action: RangedBattleAction) -> voi
 	add_child(projectile)
 	projectile.global_position = battle_animations.get_emission_position()
 	projectile.move_to(target)
-	await projectile.contact
-
-	deal_damage(target, battle_action)
-	target.take_hit(self)
+	projectile.contact.connect(ranged_attack_hit.bind(target, battle_action), CONNECT_ONE_SHOT)
 
 	battle_animations.play("ranged_release")
 	await battle_animations.animation_finished
@@ -133,6 +130,11 @@ func use_item(_target: BattleUnit, item: Item) -> void:
 
 	battle_animations.play("idle")
 	async_turn_pool.remove(self)
+
+
+func ranged_attack_hit(target: BattleUnit, battle_action: BattleAction) -> void:
+	deal_damage(target, battle_action)
+	target.take_hit(self)
 
 
 func deal_damage(target: BattleUnit, battle_action: DamageBattleAction) -> void:
