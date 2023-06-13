@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerClassStats" load_steps=7 format=3 uid="uid://cl3i5jti6ku8h"]
+[gd_resource type="Resource" script_class="PlayerClassStats" load_steps=8 format=3 uid="uid://cl3i5jti6ku8h"]
 
 [ext_resource type="PackedScene" uid="uid://b1vf266l34g23" path="res://battle/elizabeth_battle_animations.tscn" id="1_f07vl"]
 [ext_resource type="Resource" uid="uid://ce7spjt6e3q4d" path="res://battle_actions/melee_battle_action.tres" id="1_l46et"]
 [ext_resource type="Script" path="res://class_stats/player_class_stats.gd" id="2_iwynn"]
 [ext_resource type="Resource" uid="uid://85f8208bh0bm" path="res://battle_actions/defend_battle_action.tres" id="2_ykaor"]
 [ext_resource type="Resource" uid="uid://bkcnob8goqx4q" path="res://battle_actions/fireball_battle_action.tres" id="3_lfrhw"]
+[ext_resource type="Resource" uid="uid://b42i13djf3myt" path="res://battle_actions/sonar_attack_battle_action.tres" id="4_1fnrb"]
 [ext_resource type="Resource" uid="uid://vhmm0oy0k2sm" path="res://items/inventory.tres" id="4_dranp"]
 
 [resource]
@@ -14,5 +15,5 @@ name = "Elizabeth"
 max_health = 10
 attack = 8
 defense = 8
-battle_actions = Array[Resource]([ExtResource("1_l46et"), ExtResource("2_ykaor"), ExtResource("3_lfrhw")])
+battle_actions = Array[Resource]([ExtResource("1_l46et"), ExtResource("2_ykaor"), ExtResource("3_lfrhw"), ExtResource("4_1fnrb")])
 battle_animations = ExtResource("1_f07vl")

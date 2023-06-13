@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RangedBattleAction" load_steps=3 format=3 uid="uid://b42i13djf3myt"]
+
+[ext_resource type="PackedScene" uid="uid://bnw4rrbictcj8" path="res://projectiles/sonar_attack.tscn" id="1_dnjrl"]
+[ext_resource type="Script" path="res://battle_actions/ranged_battle_action.gd" id="1_xm63x"]
+
+[resource]
+script = ExtResource("1_xm63x")
+projectile = ExtResource("1_dnjrl")
+damage = 9
+name = "Sonar"
+description = "A blue sonar wave."

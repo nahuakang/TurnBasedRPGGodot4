@@ -68,10 +68,6 @@ offset_bottom = 3.0
 
 [node name="ActualProgressBar" parent="MarginContainer/VBoxContainer/Experience/ExperienceBar" index="2"]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 62.0
-offset_bottom = 3.0
 texture_progress = ExtResource("3_i5eq2")
 
 [editable path="MarginContainer/VBoxContainer/Experience/ExperienceBar"]
