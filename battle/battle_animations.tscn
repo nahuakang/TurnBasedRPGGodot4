@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0cquxw8ktw8d"]
+
+[ext_resource type="Script" path="res://battle/battle_animations.gd" id="1_q8q0i"]
+
+[node name="BattleAnimations" type="Sprite2D"]
+script = ExtResource("1_q8q0i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="EmissionPoint" type="Marker2D" parent="."]

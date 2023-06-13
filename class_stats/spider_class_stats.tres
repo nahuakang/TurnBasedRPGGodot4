@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ClassStats" load_steps=4 format=3 uid="uid://b8iv5jjsj5j7y"]
+
+[ext_resource type="Resource" uid="uid://ce7spjt6e3q4d" path="res://battle_actions/melee_battle_action.tres" id="1_cr00k"]
+[ext_resource type="Script" path="res://class_stats/class_stats.gd" id="1_t22bp"]
+[ext_resource type="PackedScene" uid="uid://c7tkvoqm62p6d" path="res://battle/spider_battle_animations.tscn" id="2_lx8wf"]
+
+[resource]
+script = ExtResource("1_t22bp")
+name = "Spider"
+max_health = 5
+attack = 7
+defense = 3
+battle_actions = Array[Resource]([ExtResource("1_cr00k")])
+battle_animations = ExtResource("2_lx8wf")
