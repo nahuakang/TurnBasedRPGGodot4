@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwbogyccc7mx6"]
+[gd_scene load_steps=17 format=3 uid="uid://cwbogyccc7mx6"]
 
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="1_l1e8e"]
 [ext_resource type="PackedScene" uid="uid://diy02kycrubr2" path="res://world/dirt_tiles.tscn" id="2_kqjnp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://burq6rw67li2s" path="res://world/random_encounters.tscn" id="12_ytp3q"]
 [ext_resource type="Resource" uid="uid://dulhmh0tatbv0" path="res://class_stats/werewolf_class_stats.tres" id="13_jrgl4"]
 [ext_resource type="Resource" uid="uid://b8iv5jjsj5j7y" path="res://class_stats/spider_class_stats.tres" id="14_ij6h3"]
+[ext_resource type="Resource" uid="uid://sgl4o24hr4j8" path="res://class_stats/gargoyle_class_stats.tres" id="15_rkl0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v713c"]
 size = Vector2(16, 16)
@@ -75,7 +76,7 @@ position = Vector2(81, 205)
 
 [node name="RandomEncounters" parent="." instance=ExtResource("12_ytp3q")]
 position = Vector2(53, 108)
-encounters = Array[Resource("res://class_stats/class_stats.gd")]([ExtResource("13_jrgl4"), ExtResource("14_ij6h3")])
+encounters = Array[Resource("res://class_stats/class_stats.gd")]([ExtResource("13_jrgl4"), ExtResource("14_ij6h3"), ExtResource("15_rkl0i")])
 
 [editable path="WallTiles"]
 [editable path="Door"]
