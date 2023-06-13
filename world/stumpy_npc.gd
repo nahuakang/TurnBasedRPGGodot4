@@ -11,12 +11,19 @@ const APPLE_ITEM: Item = preload("res://items/apple_item.tres")
 ## VARIABLES
 #############
 
+@onready var id: String = WorldStash.get_id(self)
+
 var inventory := ReferenceStash.inventory
 var has_apple := false
 
 #############
 ## OVERRIDES
 #############
+
+func _ready() -> void:
+	if WorldStash.retrieve(id, "has_apple"):
+		has_apple = true
+
 
 func _run_interaction() -> void:
 	if not has_apple:
@@ -35,6 +42,7 @@ func _run_interaction() -> void:
 			await Events.dialog_finished
 
 			has_apple = true
+			WorldStash.stash(id, "has_apple", true)
 
 		else:
 			Events.request_show_dialog.emit("I'll look around for you.", ELIZABETH_CHARACTER)

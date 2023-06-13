@@ -20,7 +20,8 @@ var inventory: Inventory = ReferenceStash.inventory
 #############
 
 func _ready() -> void:
-	pass
+	if WorldStash.retrieve(id, "freed"):
+		queue_free()
 
 
 func _run_interaction() -> void:
@@ -28,7 +29,8 @@ func _run_interaction() -> void:
 
 	Events.request_show_message.emit("You found a " + item.name + ".")
 
-	# Remove the item upon interaction
+	# Stash the pickup info and remove the item upon interaction
+	WorldStash.stash(id, "freed", true)
 	queue_free()
 
 
