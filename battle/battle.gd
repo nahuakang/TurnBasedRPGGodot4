@@ -88,8 +88,12 @@ func battle_won() -> void:
 
 
 func exit_battle() -> void:
-	timer.start(EXIT_TIMER_TIMOUT)
-	await timer.timeout
+#	timer.start(EXIT_TIMER_TIMOUT)
+#	await timer.timeout
+
+	await Transition.fade_to_color(Color.BLACK)
+	Transition.fade_from_color(Color.BLACK)
+
 	SceneStack.pop()
 
 

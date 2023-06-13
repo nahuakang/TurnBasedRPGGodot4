@@ -88,7 +88,11 @@ func encounter() -> void:
 	random_encounters.shuffle()
 	ReferenceStash.encounter_class = random_encounters.front()
 
-	# If encounters, enter battle scene
+	# If encounters, transition and enter battle scene
+	get_tree().paused = true
+	await Transition.fade_to_color(Color.WHITE)
+	Transition.set_color(Color.TRANSPARENT)
+	get_tree().paused = false
 	SceneStack.push("res://battle/battle.tscn")
 
 
@@ -130,9 +134,14 @@ func is_moving() -> bool:
 
 
 func go_to_new_area(new_area_path: String) -> void:
+	get_tree().paused = true
+	await Transition.fade_to_color(Color.BLACK)
+	get_tree().paused = false
+
 	encounter_meter = MAX_ENCOUNTER_METER
 	LevelSwapper.level_swap(self, new_area_path)
 
+	await Transition.fade_from_color(Color.BLACK)
 
 #####################
 ## SIGNALS CALLBACKS

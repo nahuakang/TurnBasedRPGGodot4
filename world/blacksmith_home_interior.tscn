@@ -63,4 +63,14 @@ texture = ExtResource("8_sc3j0")
 [node name="Anvil" parent="." instance=ExtResource("9_n68ob")]
 position = Vector2(24, 56)
 
+[node name="Background" type="Node2D" parent="."]
+z_index = -2
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_left = -88.0
+offset_top = -56.0
+offset_right = 240.0
+offset_bottom = 128.0
+color = Color(0, 0, 0, 1)
+
 [editable path="Door"]
