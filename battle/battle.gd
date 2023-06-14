@@ -32,6 +32,8 @@ const DEFEND_TIMEOUT: float = 1.0
 # The camera position to tween to when the enemy attacks the player
 @onready var player_camera_position: Vector2 = get_battle_unit_camera_position(player_battle_unit)
 
+var enemy_ai: AI = null
+
 ##############
 ## REFERENCES
 ##############
@@ -50,7 +52,11 @@ func _ready() -> void:
 		enemy_battle_unit.stats = encounter_class.duplicate()
 
 	player_battle_unit_info.stats = player_battle_unit.stats
+
 	enemy_battle_unit_info.stats = enemy_battle_unit.stats
+	assert(enemy_battle_unit.stats.ai is Script)
+	enemy_ai = enemy_battle_unit.stats.ai.new()
+	add_child(enemy_ai)
 
 	await pan_in_animation_player.animation_finished
 
@@ -147,7 +153,7 @@ func _on_enemy_turn_started() -> void:
 		exit_battle()
 		return
 
-	var battle_action = enemy_battle_unit.stats.battle_actions.front()
+	var battle_action = enemy_ai._select_battle_action(enemy_battle_unit.stats)
 
 	if battle_action is MeleeBattleAction:
 		battle_camera.focus_target(player_camera_position, CAMERA_TWEEN_FOCUS_ZOOM_IN)
@@ -155,6 +161,13 @@ func _on_enemy_turn_started() -> void:
 
 	elif battle_action is RangedBattleAction:
 		enemy_battle_unit.ranged_attack(player_battle_unit, battle_action)
+
+	elif battle_action.name == "Defend":
+		async_turn_pool.add(self)
+		enemy_battle_unit.defend = true
+		timer.start(DEFEND_TIMEOUT)
+		await timer.timeout
+		async_turn_pool.remove(self)
 
 
 func _on_async_turn_pool_turn_over() -> void:

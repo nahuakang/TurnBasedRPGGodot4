@@ -5,6 +5,7 @@ class_name ClassStats
 ## EXPORTS
 ###########
 
+@export var ai: Script = null
 @export var name: String
 @export var max_health: int: set = set_max_health # Used to set the `.tres` value
 @export var attack: int

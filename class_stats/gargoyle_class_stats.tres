@@ -1,14 +1,17 @@
-[gd_resource type="Resource" script_class="ClassStats" load_steps=4 format=3 uid="uid://sgl4o24hr4j8"]
+[gd_resource type="Resource" script_class="ClassStats" load_steps=6 format=3 uid="uid://sgl4o24hr4j8"]
 
+[ext_resource type="Script" path="res://ai/random_action_ai.gd" id="1_2uduh"]
 [ext_resource type="Resource" uid="uid://b42i13djf3myt" path="res://battle_actions/sonar_attack_battle_action.tres" id="1_lpgx5"]
 [ext_resource type="Script" path="res://class_stats/class_stats.gd" id="1_rkdfy"]
+[ext_resource type="Resource" uid="uid://85f8208bh0bm" path="res://battle_actions/defend_battle_action.tres" id="2_kl887"]
 [ext_resource type="PackedScene" uid="uid://ca3qiklsext4f" path="res://battle/gargoyle_battle_animations.tscn" id="2_xa1ci"]
 
 [resource]
 script = ExtResource("1_rkdfy")
+ai = ExtResource("1_2uduh")
 name = "Gargoyle"
 max_health = 10
 attack = 8
 defense = 6
-battle_actions = Array[Resource]([ExtResource("1_lpgx5")])
+battle_actions = Array[Resource]([ExtResource("1_lpgx5"), ExtResource("2_kl887")])
 battle_animations = ExtResource("2_xa1ci")

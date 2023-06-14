@@ -15,11 +15,16 @@ const APPROACHER_Z_INDEX: int = 10       # Ensure the approacher appears on top
 const KNOCKBACK_OFFSET: int = 24         # Offset for knockback by the attacker
 const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 
+###########
+## EXPORTS
+###########
+
+@export var stats: ClassStats: set = set_stats
+
 #############
 ## VARIABLES
 #############
 
-@export var stats: ClassStats: set = set_stats
 @onready var root_position: Vector2 = global_position # Position before attack
 @onready var battle_shield: Node2D = $BattleShield
 
