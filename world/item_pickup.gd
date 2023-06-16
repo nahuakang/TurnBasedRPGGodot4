@@ -1,9 +1,17 @@
 extends Interactable
 
 #############
+## CONSTANTS
+#############
+
+const PICKUP_SOUND_DURATION: float = 0.3
+
+#############
 ## VARIABLES
 #############
 
+@onready var pickup_sound: AudioStreamPlayer = $PickupSound
+@onready var pickup_sound_timer: Timer = $Timer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var id := WorldStash.get_id(self)
 
@@ -26,6 +34,10 @@ func _ready() -> void:
 
 func _run_interaction() -> void:
 	inventory.add_item(item)
+
+	pickup_sound_timer.start(PICKUP_SOUND_DURATION)
+	pickup_sound.play()
+	await pickup_sound_timer.timeout
 
 	Events.request_show_message.emit("You found a " + item.name + ".")
 

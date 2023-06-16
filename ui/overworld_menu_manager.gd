@@ -17,6 +17,7 @@ const TIMER_DURATION: float = 0.25
 @onready var items_list: FocusMenu = %ItemsList
 @onready var overworld_menu: FocusMenu = %OverworldMenu
 @onready var timer: Timer = $Timer
+@onready var heal_sound: AudioStreamPlayer = $HealSound
 
 var inventory: Inventory = ReferenceStash.inventory
 var item_resource: Item
@@ -52,6 +53,8 @@ func use_healing_item(item: HealingItem) -> void:
 	ui_stack.pop() # Hide the items list
 	ui_stack.push(elizabeth_stats)
 	inventory.remove_item(item)
+
+	heal_sound.play()
 	stats_resource.health += item.heal_amount
 
 	await elizabeth_stats.animation_finished

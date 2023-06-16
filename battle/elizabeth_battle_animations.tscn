@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1vf266l34g23"]
+[gd_scene load_steps=17 format=3 uid="uid://b1vf266l34g23"]
 
 [ext_resource type="Texture2D" uid="uid://dwsjglbgnkdks" path="res://assets/sprites/ElizabethBattle.png" id="1_ldv4u"]
 [ext_resource type="Script" path="res://battle/battle_animations.gd" id="2_b1wtx"]
+[ext_resource type="AudioStream" uid="uid://cpk5dlpnypeok" path="res://assets/audio/a_attack_swordswing.wav" id="3_4evlm"]
 [ext_resource type="Texture2D" uid="uid://cd8vmywk5lkdb" path="res://assets/sprites/ElizabethShadow.png" id="3_pmodu"]
 
 [sub_resource type="Animation" id="Animation_phu0c"]
@@ -191,22 +192,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [10, 11, 12, 13]
 }
-
-[sub_resource type="Animation" id="Animation_btsr4"]
-resource_name = "return"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [14, 15, 16, 17, 18]
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_4evlm")
+}],
+"times": PackedFloat32Array(0)
 }
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_rgdqo"]
 resource_name = "ranged_anticipation"
@@ -238,6 +238,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_btsr4"]
+resource_name = "return"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85jyt"]
@@ -276,3 +292,6 @@ texture = ExtResource("3_pmodu")
 
 [node name="EmissionPoint" type="Marker2D" parent="."]
 position = Vector2(12, 17)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"

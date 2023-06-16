@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1hip3btpmytq"]
+[gd_scene load_steps=8 format=3 uid="uid://b1hip3btpmytq"]
 
 [ext_resource type="PackedScene" uid="uid://cbhti0j4w38vv" path="res://ui/overworld_menu.tscn" id="1_a44tf"]
 [ext_resource type="Script" path="res://ui/overworld_menu_manager.gd" id="1_o16tp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nxchr562c1cd" path="res://ui/items_list.tscn" id="3_j6r88"]
 [ext_resource type="PackedScene" uid="uid://ctvy63bh3b158" path="res://ui/context_menu.tscn" id="4_eq13h"]
 [ext_resource type="PackedScene" uid="uid://bmr78rrctc33e" path="res://ui/info_menu.tscn" id="5_jayt7"]
+[ext_resource type="AudioStream" uid="uid://cuqay3wis1c7q" path="res://assets/audio/a_potion.wav" id="7_c62kq"]
 
 [node name="OverworldMenuManager" type="MarginContainer"]
 process_mode = 2
@@ -54,6 +55,10 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="HealSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_c62kq")
+bus = &"Sounds"
 
 [connection signal="option_selected" from="HBoxContainer/OverworldMenu" to="." method="_on_overworld_menu_option_selected"]
 [connection signal="resource_selected" from="HBoxContainer/VBoxContainer/ItemsList" to="." method="_on_items_list_resource_selected"]

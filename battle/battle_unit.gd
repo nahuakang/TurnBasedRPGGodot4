@@ -28,9 +28,10 @@ const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 @onready var root_position: Vector2 = global_position # Position before attack
 @onready var battle_shield: Node2D = $BattleShield
 
-@onready var defend_sound: AudioStreamPlayer = $Defend
-@onready var impact_sound: AudioStreamPlayer = $Impact
-@onready var impact_defend_sound: AudioStreamPlayer = $ImpactDefend
+@onready var defend_sound: AudioStreamPlayer = $DefendSound
+@onready var impact_sound: AudioStreamPlayer = $ImpactSound
+@onready var impact_defend_sound: AudioStreamPlayer = $ImpactDefendSound
+@onready var heal_sound: AudioStreamPlayer = $HealSound
 
 var battle_animations: BattleAnimations
 var defend: bool = false : set = set_defend
@@ -136,6 +137,8 @@ func use_item(_target: BattleUnit, item: Item) -> void:
 	await battle_animations.animation_finished
 
 	stats.health += item.heal_amount
+
+	heal_sound.play()
 
 	battle_animations.play("item_release")
 	await battle_animations.animation_finished

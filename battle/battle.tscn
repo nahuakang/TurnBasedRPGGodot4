@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5ul8k710eaay"]
+[gd_scene load_steps=22 format=3 uid="uid://c5ul8k710eaay"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_75qho"]
 [ext_resource type="Texture2D" uid="uid://dya0vh8uy3rx2" path="res://assets/sprites/Sky.png" id="2_vxqhw"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bgtpiv2wsh8t8" path="res://ui/battle_unit_info.tscn" id="13_fy6nq"]
 [ext_resource type="PackedScene" uid="uid://deerril57b1c5" path="res://ui/level_up_ui.tscn" id="14_3ola2"]
 [ext_resource type="PackedScene" uid="uid://bqcql3h7t1xu4" path="res://ui/battle_menu_manager.tscn" id="16_hi8aj"]
+[ext_resource type="AudioStream" uid="uid://byff71ohep8ht" path="res://assets/audio/a_levelup.wav" id="17_dee21"]
 
 [sub_resource type="Animation" id="Animation_3qyng"]
 length = 0.001
@@ -284,3 +285,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_dee21")
+bus = &"Sounds"

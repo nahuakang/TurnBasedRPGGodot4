@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brjykyw5h2jpy"]
+[gd_scene load_steps=4 format=3 uid="uid://brjykyw5h2jpy"]
 
 [ext_resource type="Script" path="res://world/item_pickup.gd" id="1_4ptii"]
 [ext_resource type="Texture2D" uid="uid://cecnkveil8s6t" path="res://assets/sprites/Apple.png" id="1_18u2h"]
+[ext_resource type="AudioStream" uid="uid://fudqe720daiw" path="res://assets/audio/a_item_pickup.wav" id="4_elhxd"]
 
 [node name="ItemPickup" type="StaticBody2D"]
 collision_layer = 9
@@ -14,3 +15,10 @@ texture = ExtResource("1_18u2h")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-6, 4, -6, -4, -4, -6, 4, -6, 6, -4, 6, 4, 4, 6, -4, 6)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_elhxd")
+bus = &"Sounds"
+
+[node name="Timer" type="Timer" parent="."]

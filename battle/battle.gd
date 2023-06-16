@@ -23,6 +23,7 @@ const DEFEND_TIMEOUT: float = 1.0
 @onready var player_battle_unit_info: BattleUnitInfo = $BattleUI/PlayerBattleUnitInfo
 @onready var enemy_battle_unit_info: BattleUnitInfo = $BattleUI/EnemyBattleUnitInfo
 @onready var level_up_ui: LevelUpUI = %LevelUpUI
+@onready var level_up_sound: AudioStreamPlayer = $LevelupSound
 @onready var battle_menu_manager: BattleMenuManager = %BattleMenuManager
 @onready var battle_camera: BattleCamera = $BattleCamera
 # The camera position to return to after tweening camera movement for attack
@@ -87,6 +88,7 @@ func battle_won() -> void:
 	player_battle_unit.stats.experience += 105
 
 	if player_battle_unit.stats.level > previous_level:
+		level_up_sound.play()
 		await level_up_ui.level_up()
 
 	timer.start(BATTLE_WON_TIMEOUT)
