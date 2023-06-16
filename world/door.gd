@@ -13,3 +13,4 @@ class_name Door
 
 @export_file("*.tscn") var new_area
 @export_range(0, 32) var connection: int
+@export var door_sound_effect: bool = false

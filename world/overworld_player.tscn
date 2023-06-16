@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://7ekxn24buju2"]
+[gd_scene load_steps=30 format=3 uid="uid://7ekxn24buju2"]
 
 [ext_resource type="Script" path="res://world/overworld_player.gd" id="1_fhgci"]
 [ext_resource type="Texture2D" uid="uid://cxmbircyqf8wk" path="res://assets/sprites/ElizabethWalk.png" id="2_st8mt"]
 [ext_resource type="PackedScene" uid="uid://g4x553v1lrdu" path="res://world/overworld_camera.tscn" id="3_qfd3p"]
+[ext_resource type="AudioStream" uid="uid://b36bbysprfnww" path="res://assets/audio/a_use_door.wav" id="4_2g352"]
+[ext_resource type="AudioStream" uid="uid://0kn40mfht234" path="res://assets/audio/a_enter_next_area.wav" id="5_7lghe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah4dt"]
 atlas = ExtResource("2_st8mt")
@@ -225,5 +227,16 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
 shape = SubResource("RectangleShape2D_4fd8n")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="UseDoor" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_2g352")
+bus = &"Sounds"
+
+[node name="EnterNewArea" type="AudioStreamPlayer" parent="Sounds"]
+process_mode = 3
+stream = ExtResource("5_7lghe")
+bus = &"Sounds"
 
 [connection signal="area_entered" from="DoorDetector" to="." method="_on_door_detector_area_entered"]

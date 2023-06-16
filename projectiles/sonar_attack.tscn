@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnw4rrbictcj8"]
+[gd_scene load_steps=9 format=3 uid="uid://bnw4rrbictcj8"]
 
 [ext_resource type="Script" path="res://projectiles/sonar_attack.gd" id="1_dxjba"]
 [ext_resource type="Texture2D" uid="uid://dysmgvn0thi3t" path="res://assets/sprites/SonarAttack.png" id="2_a2tsy"]
+[ext_resource type="AudioStream" uid="uid://6qkt47tmgulo" path="res://assets/audio/a_sonar.wav" id="3_ncwp5"]
 
 [sub_resource type="Animation" id="Animation_nbwre"]
 length = 0.001
@@ -87,5 +88,10 @@ autoplay = "start"
 libraries = {
 "": SubResource("AnimationLibrary_d4ee5")
 }
+
+[node name="SonarSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ncwp5")
+autoplay = true
+bus = &"Sounds"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -28,6 +28,10 @@ const ROOT_Z_INDEX: int = 0              # Default Z index for after attack
 @onready var root_position: Vector2 = global_position # Position before attack
 @onready var battle_shield: Node2D = $BattleShield
 
+@onready var defend_sound: AudioStreamPlayer = $Defend
+@onready var impact_sound: AudioStreamPlayer = $Impact
+@onready var impact_defend_sound: AudioStreamPlayer = $ImpactDefend
+
 var battle_animations: BattleAnimations
 var defend: bool = false : set = set_defend
 var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
@@ -60,6 +64,9 @@ func set_stats(value: ClassStats) -> void:
 func set_defend(value: bool) -> void:
 	defend = value
 	battle_shield.visible = defend
+
+	if defend:
+		defend_sound.play()
 
 
 ###########
@@ -152,8 +159,11 @@ func deal_damage(target: BattleUnit, battle_action: DamageBattleAction) -> void:
 	)
 
 	if target.defend:
+		impact_defend_sound.play()
 		target.defend = false # Turn off defend
 		damage = round(damage / 2)
+	else:
+		impact_sound.play()
 
 	target.stats.set_health(target.stats.health - damage)
 

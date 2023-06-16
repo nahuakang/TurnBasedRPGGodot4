@@ -73,3 +73,5 @@ position = Vector2(-72, 192)
 position = Vector2(144, 40)
 
 [editable path="Door"]
+[editable path="BlacksmithHome"]
+[editable path="BlacksmithHome/Door"]

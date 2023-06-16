@@ -78,7 +78,7 @@ texture = ExtResource("3_fnlqo")
 stretch_mode = 2
 flip_h = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Voice" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ortcx")
 volume_db = -10.0
 bus = &"Sounds"

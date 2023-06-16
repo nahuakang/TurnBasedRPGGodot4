@@ -17,6 +17,8 @@ const ENCOUNTER_METER_REDUCTION_AMOUNT: float = 75.0
 
 @onready var animated_player := $AnimatedSprite2D
 @onready var interactable_detector: Area2D = $InteractableDetector
+@onready var enter_new_area_sound: AudioStreamPlayer = $Sounds/EnterNewArea
+@onready var use_door_sound: AudioStreamPlayer = $Sounds/UseDoor
 
 var encounter_meter := MAX_ENCOUNTER_METER
 var encounter_chance := MIN_ENCOUNTER_CHANCE
@@ -156,4 +158,11 @@ func _on_door_detector_area_entered(door: Area2D) -> void:
 		return
 
 	last_door_connection = door.connection
+
+	if door.door_sound_effect:
+		print("use door sound")
+		use_door_sound.play()
+	else:
+		enter_new_area_sound.play()
+
 	call_deferred("go_to_new_area", door.new_area)

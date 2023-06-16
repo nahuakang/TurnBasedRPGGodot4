@@ -8,3 +8,6 @@ script = ExtResource("1_q8q0i")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="EmissionPoint" type="Marker2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Sounds"

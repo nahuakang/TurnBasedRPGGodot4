@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://drjn67brto1nm"]
+[gd_scene load_steps=12 format=3 uid="uid://drjn67brto1nm"]
 
 [ext_resource type="Script" path="res://projectiles/fireball.gd" id="1_b0jr2"]
 [ext_resource type="Texture2D" uid="uid://c4v3j3nf20elr" path="res://assets/sprites/Fireball.png" id="2_yjoym"]
 [ext_resource type="Texture2D" uid="uid://bkgmrtun00wa1" path="res://assets/sprites/FlameParticle.png" id="3_lghfp"]
+[ext_resource type="AudioStream" uid="uid://sivj2lkkuxau" path="res://assets/audio/a_fire.wav" id="4_a1fmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iw4u"]
 atlas = ExtResource("2_yjoym")
@@ -93,3 +94,8 @@ angle_max = 180.0
 scale_amount_min = 0.0
 scale_amount_curve = SubResource("Curve_d7dlu")
 color_ramp = SubResource("Gradient_o8tnm")
+
+[node name="FireSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a1fmm")
+autoplay = true
+bus = &"Sounds"
