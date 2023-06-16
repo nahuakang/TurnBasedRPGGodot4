@@ -11,9 +11,11 @@ const CHAR_DISPLAY_DURATION: float = 0.08
 #############
 @onready var text_box: RichTextLabel = %TextBox
 @onready var portrait: TextureRect = %Portrait
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var typer: Tween
 var is_typing: bool = false
+var pitch: float = 1.0
 
 #############
 ## OVERRIDES
@@ -61,6 +63,7 @@ func type_dialog(bbcode: String, character: Character) -> void:
 
 	text_box.text = bbcode
 	portrait.texture = character.portrait
+	pitch = character.voice_pitch
 
 	# Must await so that `get_total_character_count` can be correct without
 	# extra BBCode
@@ -77,5 +80,10 @@ func type_dialog(bbcode: String, character: Character) -> void:
 
 
 func set_visible_characters(index: int) -> void:
-#	var is_new_character: bool = index > text_box.visible_characters
 	text_box.visible_characters = index
+
+	var is_new_character: bool = index > text_box.visible_characters
+	if is_new_character and index < text_box.get_total_character_count():
+		var character = text_box.text.substr(text_box.visible_characters, 1)
+		audio_stream_player.pitch_scale = randf_range(pitch - 0.1, pitch + 0.1)
+		audio_stream_player.play()

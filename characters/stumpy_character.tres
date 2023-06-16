@@ -7,3 +7,4 @@
 script = ExtResource("1_xcbj7")
 name = "Stumpy"
 portrait = ExtResource("1_0p2an")
+voice_pitch = 0.8

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpkose037kk0o"]
+[gd_scene load_steps=7 format=3 uid="uid://bpkose037kk0o"]
 
 [ext_resource type="Texture2D" uid="uid://dcoo24s8xten5" path="res://assets/sprites/DialogShadow.png" id="1_b0ji4"]
 [ext_resource type="Theme" uid="uid://bytiyxp3n1j8y" path="res://assets/default_theme.tres" id="1_oixjd"]
 [ext_resource type="Script" path="res://ui/dialog_ui.gd" id="3_7byom"]
 [ext_resource type="Texture2D" uid="uid://bsxqfaknx665y" path="res://assets/sprites/PortraitEdge.png" id="3_fnlqo"]
 [ext_resource type="Texture2D" uid="uid://hyt464g7gidt" path="res://assets/sprites/StumpyPortrait.png" id="4_vwikp"]
+[ext_resource type="AudioStream" uid="uid://df36kbput1x7g" path="res://assets/audio/a_voice.wav" id="6_ortcx"]
 
 [node name="DialogUI" type="TextureRect"]
 process_mode = 3
@@ -76,3 +77,8 @@ layout_mode = 2
 texture = ExtResource("3_fnlqo")
 stretch_mode = 2
 flip_h = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ortcx")
+volume_db = -10.0
+bus = &"Sounds"
