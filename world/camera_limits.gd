@@ -9,6 +9,7 @@ class_name CameraLimits
 #############
 
 func _ready():
+	await get_tree().process_frame
 	var camera_limits := Rect2(self.global_position, self.size)
 	Events.request_update_camera_limits.emit(camera_limits)
 	hide()

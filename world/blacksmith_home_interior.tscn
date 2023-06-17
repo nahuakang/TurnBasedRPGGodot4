@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpyq6wob8hjvr"]
+[gd_scene load_steps=11 format=3 uid="uid://bpyq6wob8hjvr"]
 
 [ext_resource type="PackedScene" uid="uid://cixe5nhwfwmog" path="res://world/door.tscn" id="1_ucdb1"]
 [ext_resource type="PackedScene" uid="uid://bkdk3q8kt7vyq" path="res://world/camera_limits.tscn" id="1_ulcc5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://csgvm3hlhqolt" path="res://world/forge.tscn" id="7_fub53"]
 [ext_resource type="Texture2D" uid="uid://s24b4heihhl6" path="res://assets/sprites/WeaponWall.png" id="8_sc3j0"]
 [ext_resource type="PackedScene" uid="uid://btvwa7hmjon5e" path="res://world/anvil.tscn" id="9_n68ob"]
+[ext_resource type="PackedScene" uid="uid://bmlij6kt474sr" path="res://ui/overworld_ui.tscn" id="10_8b5k0"]
 
 [node name="BlacksmithHomeInterior" type="Node2D"]
 y_sort_enabled = true
@@ -48,8 +49,9 @@ position = Vector2(128, 104)
 position = Vector2(144, 104)
 
 [node name="Rug" type="Sprite2D" parent="."]
-position = Vector2(104, 88)
+position = Vector2(104, 72)
 texture = ExtResource("5_12w6g")
+offset = Vector2(0, 20)
 
 [node name="Bed" parent="." instance=ExtResource("6_ixo6v")]
 position = Vector2(144, 48)
@@ -73,5 +75,7 @@ offset_top = -56.0
 offset_right = 240.0
 offset_bottom = 128.0
 color = Color(0, 0, 0, 1)
+
+[node name="OverworldUI" parent="." instance=ExtResource("10_8b5k0")]
 
 [editable path="Door"]

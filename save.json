@@ -1,0 +1,1 @@
+{"current_scene":"res://world/west_meadow.tscn","inventory":[{"amount":2,"resource_path":"res://items/apple_item.tres"}],"player":{"x":212.000381469727,"y":144},"stats":{"experience":5,"health":6,"level":2},"world_data":{"Town_ItemPickup_(136, 104)":{"freed":true}}}

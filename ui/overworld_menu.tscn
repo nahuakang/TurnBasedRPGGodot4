@@ -11,7 +11,7 @@ offset_right = 48.0
 offset_bottom = 14.0
 theme = ExtResource("1_vqqvv")
 script = ExtResource("2_oiavd")
-focus_nodes = Array[NodePath]([NodePath("MarginContainer/VBoxContainer/StatsButton"), NodePath("MarginContainer/VBoxContainer/ItemsButton"), NodePath("MarginContainer/VBoxContainer/ExitButton")])
+focus_nodes = Array[NodePath]([NodePath("MarginContainer/VBoxContainer/StatsButton"), NodePath("MarginContainer/VBoxContainer/ItemsButton"), NodePath("MarginContainer/VBoxContainer/SaveButton"), NodePath("MarginContainer/VBoxContainer/LoadButton"), NodePath("MarginContainer/VBoxContainer/ExitButton")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -32,10 +32,20 @@ text = "Stats"
 layout_mode = 2
 text = "Items"
 
+[node name="SaveButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
+layout_mode = 2
+text = "Load"
+
 [node name="ExitButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_li8a2")]
 layout_mode = 2
 text = "Exit"
 
 [connection signal="button_down" from="MarginContainer/VBoxContainer/StatsButton" to="." method="_on_stats_button_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/ItemsButton" to="." method="_on_items_button_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_button_down"]

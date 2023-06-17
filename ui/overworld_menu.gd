@@ -8,6 +8,8 @@ class_name OverworldMenu
 enum OverworldMenuOption {
 	STATS,
 	ITEMS,
+	SAVE,
+	LOAD,
 	EXIT,
 }
 
@@ -27,6 +29,14 @@ func _on_stats_button_button_down():
 
 func _on_items_button_button_down():
 	option_selected.emit(OverworldMenuOption.ITEMS)
+
+
+func _on_save_button_button_down():
+	option_selected.emit(OverworldMenuOption.SAVE)
+
+
+func _on_load_button_button_down():
+	option_selected.emit(OverworldMenuOption.LOAD)
 
 
 func _on_exit_button_button_down():

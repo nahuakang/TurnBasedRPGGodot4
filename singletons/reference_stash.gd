@@ -10,3 +10,4 @@ var elizabeth_stats: PlayerClassStats = load("res://class_stats/elizabeth_class_
 var inventory: Inventory = load("res://items/inventory.tres")
 var random_encounters: Array[ClassStats] = []
 var encounter_class: ClassStats
+var player: OverworldPlayer

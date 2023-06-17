@@ -16,14 +16,15 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SceneStack="*res://scripts/scene_stack.gd"
-ReferenceStash="*res://scripts/reference_stash.gd"
-Events="*res://scripts/events.gd"
+SceneStack="*res://singletons/scene_stack.gd"
+ReferenceStash="*res://singletons/reference_stash.gd"
+Events="*res://singletons/events.gd"
 GlobalUI="*res://ui/global_ui.tscn"
-LevelSwapper="*res://scripts/level_swapper.gd"
-WorldStash="*res://scripts/world_stash.gd"
+LevelSwapper="*res://singletons/level_swapper.gd"
+WorldStash="*res://singletons/world_stash.gd"
 Transition="*res://ui/transition.tscn"
-MusicPlayer="*res://scripts/music_player.tscn"
+MusicPlayer="*res://singletons/music_player.tscn"
+SaveManager="*res://singletons/save_manager.gd"
 
 [display]
 

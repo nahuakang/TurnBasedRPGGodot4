@@ -38,6 +38,9 @@ func _ready() -> void:
 	# Set the default InteractableDetector rotation to facing down
 	interactable_detector.rotation = Vector2.DOWN.angle()
 
+	if not LevelSwapper.player is OverworldPlayer:
+		ReferenceStash.player = self
+
 
 func _physics_process(delta: float) -> void:
 	move_player()
@@ -160,7 +163,6 @@ func _on_door_detector_area_entered(door: Area2D) -> void:
 	last_door_connection = door.connection
 
 	if door.door_sound_effect:
-		print("use door sound")
 		use_door_sound.play()
 	else:
 		enter_new_area_sound.play()

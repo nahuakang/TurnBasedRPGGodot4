@@ -79,6 +79,17 @@ func _on_overworld_menu_option_selected(option: OverworldMenu.OverworldMenuOptio
 		OverworldMenu.OverworldMenuOption.ITEMS:
 			ui_stack.push(items_list)
 
+		OverworldMenu.OverworldMenuOption.SAVE:
+			get_viewport().set_input_as_handled()
+			SaveManager.save_game()
+			ui_stack.pop() # Hide the menu
+			Events.request_show_message.emit("Game saved")
+
+		OverworldMenu.OverworldMenuOption.LOAD:
+			get_viewport().set_input_as_handled()
+			get_tree().paused = false
+			SaveManager.load_game()
+
 		OverworldMenu.OverworldMenuOption.EXIT:
 			ui_stack.pop()
 			get_tree().paused = false
@@ -105,5 +116,6 @@ func _on_context_menu_option_selected(option: ContextMenu.CONTEXT_OPTION) -> voi
 
 
 func _on_request_show_overworld_menu() -> void:
+	print("showing overworld menu")
 	ui_stack.push(overworld_menu)
 	get_tree().paused = true
