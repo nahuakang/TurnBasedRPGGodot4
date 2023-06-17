@@ -47,6 +47,8 @@ var async_turn_pool: AsyncTurnPool = ReferenceStash.async_turn_pool
 #############
 
 func _ready() -> void:
+	MusicPlayer.push_song(MusicPlayer.battle_music)
+
 	var encounter_class: ClassStats = ReferenceStash.encounter_class
 
 	if encounter_class is ClassStats:
@@ -96,8 +98,7 @@ func battle_won() -> void:
 
 
 func exit_battle() -> void:
-#	timer.start(EXIT_TIMER_TIMOUT)
-#	await timer.timeout
+	MusicPlayer.pop_song()
 
 	await Transition.fade_to_color(Color.BLACK)
 	Transition.fade_from_color(Color.BLACK)

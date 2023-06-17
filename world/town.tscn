@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1g63qdlq0ae5"]
+[gd_scene load_steps=16 format=3 uid="uid://c1g63qdlq0ae5"]
 
 [ext_resource type="PackedScene" uid="uid://7ekxn24buju2" path="res://world/overworld_player.tscn" id="1_5babj"]
+[ext_resource type="Script" path="res://world/town.gd" id="1_ms040"]
 [ext_resource type="PackedScene" uid="uid://bqmtk83sdu2gn" path="res://world/grass_background.tscn" id="2_adq74"]
 [ext_resource type="PackedScene" uid="uid://diy02kycrubr2" path="res://world/dirt_tiles.tscn" id="2_phpyc"]
 [ext_resource type="PackedScene" uid="uid://3lj6677x6swj" path="res://world/barrel.tscn" id="4_eehsa"]
@@ -17,6 +18,7 @@
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_ms040")
 
 [node name="GrassBackground" parent="." instance=ExtResource("2_adq74")]
 

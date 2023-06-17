@@ -23,6 +23,7 @@ GlobalUI="*res://ui/global_ui.tscn"
 LevelSwapper="*res://scripts/level_swapper.gd"
 WorldStash="*res://scripts/world_stash.gd"
 Transition="*res://ui/transition.tscn"
+MusicPlayer="*res://scripts/music_player.tscn"
 
 [display]
 
